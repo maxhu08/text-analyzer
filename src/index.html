@@ -12,18 +12,23 @@
 
 <body dir="ltr" class="min-h-screen bg-neutral-900">
   <div class="mx-auto grid w-[95%] grid-flow-row sm:w-[80%] md:w-[60%] lg:w-[40%]">
-    <main class="grid grid-flow-row pt-16 gap-4">
-      <h1 class="text-4xl font-semibold text-white">Text Analyzer</h1>
-      <p class="text-white">Paste corpus here:</p>
-      <textarea id="corpus-textarea" type="text" autocomplete="off" rows="8"
-        class="w-full resize-none rounded-md border-2 border-transparent bg-neutral-800 p-1 text-base text-white placeholder-neutral-500 outline-none transition duration-[250ms] focus-within:border-blue-500"></textarea>
-      <button id="analyze-button"
-        class="w-full cursor-pointer rounded-md bg-emerald-500 p-2 transition hover:bg-emerald-600">
-        <span class="text-base text-white">analyze</span>
-      </button>
-      <div id="keyboard" class="grid gap-2"></div>
-      <div class="rounded-md bg-neutral-800 p-2">
-        <p id="results-text" class="whitespace-pre-wrap text-white">Awaiting results</p>
+    <main class="grid grid-flow-row pt-16 gap-8">
+      <div class="grid grid-flow-row gap-2">
+        <h1 class="text-4xl font-semibold text-white">Text Analyzer</h1>
+        <textarea id="corpus-textarea" type="text" autocomplete="off" rows="8"
+          class="w-full resize-none rounded-md border-2 border-transparent bg-neutral-800 p-2 text-base text-white placeholder-neutral-500 outline-none transition duration-[250ms] focus-within:border-blue-500"
+          placeholder="paste corpus here:"></textarea>
+        <button id="analyze-button"
+          class="w-full cursor-pointer rounded-md bg-emerald-500 p-2 transition hover:bg-emerald-600">
+          <span class="text-base text-white">analyze</span>
+        </button>
+      </div>
+      <div class="grid grid-flow-row gap-2">
+        <h1 class="text-4xl font-semibold text-white">Results</h1>
+        <div id="keyboard" class="grid gap-2"></div>
+        <div class="rounded-md bg-neutral-800 p-2">
+          <p id="results-text" class="whitespace-pre-wrap text-white">Awaiting results</p>
+        </div>
       </div>
     </main>
   </div>

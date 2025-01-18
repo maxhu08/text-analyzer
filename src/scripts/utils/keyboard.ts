@@ -13,12 +13,12 @@ export const createKeyboardLayout = () => {
       keyDiv.id = `key-${key}`;
 
       const keyText = document.createElement("span");
-      keyText.className = "key-text";
+      keyText.className = "key-text text-lg font-semibold";
       keyText.textContent = key;
 
       const keyPercentage = document.createElement("span");
       keyPercentage.className = "key-percentage text-xs";
-      keyPercentage.textContent = "0%";
+      keyPercentage.textContent = "0.00%";
 
       keyDiv.appendChild(keyText);
       keyDiv.appendChild(keyPercentage);
