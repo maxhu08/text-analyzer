@@ -60,7 +60,6 @@ export const updateSFBResults = (
       sfbEl.appendChild(keyEl);
     }
 
-    // Calculate the percentage
     const percentage = ((value / totalSfbs) * 100).toFixed(2);
 
     const valueText = document.createElement("span");
