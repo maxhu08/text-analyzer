@@ -11,7 +11,7 @@ export const createKeyboardLayout = () => {
       keyDiv.className =
         "key bg-neutral-800 text-white flex items-center justify-center rounded w-10 h-10";
       keyDiv.id = `key-${key}`;
-      keyDiv.textContent = key.toUpperCase();
+      keyDiv.textContent = key;
       keyDiv.title = `'${key}': 0 (0%)`;
       rowDiv.appendChild(keyDiv);
     }
@@ -31,14 +31,15 @@ export const updateKeyboardVisualization = (
     const percentage = totalChars ? (count / totalChars) * 100 : 0;
 
     let bgClass = "bg-neutral-800";
-    if (percentage >= 90) bgClass = "bg-emerald-100";
-    else if (percentage >= 75) bgClass = "bg-emerald-200";
-    else if (percentage >= 50) bgClass = "bg-emerald-300";
-    else if (percentage >= 25) bgClass = "bg-emerald-400";
-    else if (percentage >= 10) bgClass = "bg-emerald-500";
-    else if (percentage >= 5) bgClass = "bg-emerald-600";
-    else if (percentage >= 2) bgClass = "bg-emerald-700";
-    else if (percentage > 0) bgClass = "bg-emerald-800";
+    if (percentage >= 7) bgClass = "bg-emerald-200";
+    else if (percentage >= 5) bgClass = "bg-emerald-300";
+    else if (percentage >= 4) bgClass = "bg-emerald-400";
+    else if (percentage >= 3) bgClass = "bg-emerald-500";
+    else if (percentage >= 2) bgClass = "bg-emerald-600";
+    else if (percentage >= 1.5) bgClass = "bg-emerald-700";
+    else if (percentage >= 1) bgClass = "bg-emerald-800";
+    else if (percentage >= 0.5) bgClass = "bg-emerald-900";
+    else if (percentage > 0) bgClass = "bg-emerald-950";
 
     (keyEl as HTMLElement).className =
       `key ${bgClass} text-white flex items-center justify-center rounded w-10 h-10`;
