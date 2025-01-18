@@ -1,4 +1,4 @@
-export const analyze = (text: string, ngramLength: number = 2) => {
+export const analyze = (text: string) => {
   const charCounts = new Map<string, number>();
   const sameFingerNgrams = new Map<string, number>();
 
@@ -36,12 +36,13 @@ export const analyze = (text: string, ngramLength: number = 2) => {
     charCounts.set(char, (charCounts.get(char) || 0) + 1);
   }
 
-  // generate ngrams of any length and check if they belong to the same finger group
+  const ngramLength = 2;
+  // generate bigrams of any length and check if they belong to the same finger group
   for (let i = 0; i <= text.length - ngramLength; i++) {
     let isSameFinger = true;
     let ngram = "";
 
-    // build the ngram and check if it's composed only of letters
+    // build the bigram and check if it's composed only of letters
     for (let j = 0; j < ngramLength; j++) {
       const char = text[i + j].toLowerCase();
       if (/[a-z]/.test(char)) {
@@ -72,6 +73,6 @@ export const analyze = (text: string, ngramLength: number = 2) => {
   return {
     textLength: text.length,
     keyFrequencies: Object.fromEntries(charCounts),
-    sameFingerNgrams: Object.fromEntries(sameFingerNgrams)
+    sfbs: Object.fromEntries(sameFingerNgrams)
   };
 };
