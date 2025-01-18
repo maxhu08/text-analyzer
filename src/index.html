@@ -1,16 +1,24 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="styles/tailwind.css" />
-    <script src="scripts/index.ts" type="module" defer></script>
-    <title>Hello World!</title>
-  </head>
 
-  <body class="min-h-screen bg-neutral-900">
-    <div class="grid h-screen place-items-center">
-      <h1 class="text-4xl font-semibold text-white">Hello World!</h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="styles/tailwind.css" />
+  <script src="scripts/index.ts" type="module" defer></script>
+  <title>text analyzer</title>
+</head>
+
+<body class="min-h-screen bg-neutral-900">
+  <div class="grid h-screen place-items-center">
+    <div class="grid grid-flow-row gap-2">
+      <h1 class="text-4xl font-semibold text-white">Text Analzyer</h1>
+      <p class="text-white">Paste corpus here:</p>
+      <textarea id="corpus-textarea" class="bg-neutral-800 text-white"></textarea>
+      <button id="analyze-button" class="bg-emerald-500 p-2 text-white">Analyze</button>
+      <p id="results-text" class="text-white"></p>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
