@@ -9,10 +9,19 @@ export const createKeyboardLayout = () => {
     for (const key of row) {
       const keyDiv = document.createElement("div");
       keyDiv.className =
-        "key bg-neutral-800 text-white flex items-center justify-center rounded w-10 h-10";
+        "key bg-neutral-800 text-white flex flex-col items-center justify-center rounded w-16 h-16 relative";
       keyDiv.id = `key-${key}`;
-      keyDiv.textContent = key;
-      keyDiv.title = `'${key}': 0 (0%)`;
+
+      const keyText = document.createElement("span");
+      keyText.className = "key-text";
+      keyText.textContent = key;
+
+      const keyPercentage = document.createElement("span");
+      keyPercentage.className = "key-percentage text-xs";
+      keyPercentage.textContent = "0%";
+
+      keyDiv.appendChild(keyText);
+      keyDiv.appendChild(keyPercentage);
       rowDiv.appendChild(keyDiv);
     }
     keyboardEl.appendChild(rowDiv);
@@ -41,8 +50,12 @@ export const updateKeyboardVisualization = (
     else if (percentage >= 0.5) bgClass = "bg-emerald-900";
     else if (percentage > 0) bgClass = "bg-emerald-950";
 
-    (keyEl as HTMLElement).className =
-      `key ${bgClass} text-white flex items-center justify-center rounded w-10 h-10`;
-    (keyEl as HTMLElement).title = `'${key}': ${count} (${percentage}%)`;
+    keyEl.classList.replace("bg-neutral-800", bgClass);
+    (keyEl as HTMLElement).title = `'${key}': ${count} (${percentage.toFixed(2)}%)`;
+
+    const percentageEl = keyEl.querySelector(".key-percentage") as HTMLElement;
+    if (percentageEl) {
+      percentageEl.textContent = `${percentage.toFixed(2)}%`;
+    }
   });
 };
