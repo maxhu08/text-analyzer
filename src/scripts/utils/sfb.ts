@@ -52,7 +52,7 @@ export const updateSFBResults = (
       (keyEl as HTMLElement).title = `'${key}': ${count} (${percentage.toFixed(2)}%)`;
 
       const percentageEl = document.createElement("span");
-      percentageEl.className = "text-sm text-white";
+      percentageEl.className = "text-xs text-white";
       percentageEl.textContent = `${percentage.toFixed(2)}%`;
 
       keyEl.appendChild(keyText);
