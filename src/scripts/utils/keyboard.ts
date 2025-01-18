@@ -1,4 +1,5 @@
 import { keyboardEl } from "../ui";
+import { mixHexColors } from "./colors";
 
 const keyboardLayout = ["qwertyuiop[]", "asdfghjkl;'", "zxcvbnm,./"];
 
@@ -9,7 +10,8 @@ export const createKeyboardLayout = () => {
     for (const key of row) {
       const keyDiv = document.createElement("div");
       keyDiv.className =
-        "key bg-neutral-800 text-white flex flex-col items-center justify-center rounded w-16 h-16 relative";
+        "key text-white flex flex-col items-center justify-center rounded w-16 h-16 relative";
+      keyDiv.style.backgroundColor = "#262626"; // bg-neutral-800
       keyDiv.id = `key-${key}`;
 
       const keyText = document.createElement("span");
@@ -39,18 +41,22 @@ export const updateKeyboardVisualization = (
     const count = charCounts[key] || 0;
     const percentage = totalChars ? (count / totalChars) * 100 : 0;
 
-    let bgClass = "bg-neutral-800";
-    if (percentage >= 7) bgClass = "bg-emerald-200";
-    else if (percentage >= 5) bgClass = "bg-emerald-300";
-    else if (percentage >= 4) bgClass = "bg-emerald-400";
-    else if (percentage >= 3) bgClass = "bg-emerald-500";
-    else if (percentage >= 2) bgClass = "bg-emerald-600";
-    else if (percentage >= 1.5) bgClass = "bg-emerald-700";
-    else if (percentage >= 1) bgClass = "bg-emerald-800";
-    else if (percentage >= 0.5) bgClass = "bg-emerald-900";
-    else if (percentage > 0) bgClass = "bg-emerald-950";
+    let color = "#10b981";
+    let ratio = 1;
+    if (percentage >= 7) ratio = 0.1;
+    else if (percentage >= 5) ratio = 0.2;
+    else if (percentage >= 4) ratio = 0.3;
+    else if (percentage >= 3) ratio = 0.4;
+    else if (percentage >= 2) ratio = 0.5;
+    else if (percentage >= 1.5) ratio = 0.6;
+    else if (percentage >= 1) ratio = 0.7;
+    else if (percentage >= 0.5) ratio = 0.8;
+    else if (percentage > 0) ratio = 0.9;
 
-    keyEl.classList.replace("bg-neutral-800", bgClass);
+    const mixedColor = mixHexColors(color, "#262626", ratio);
+
+    (keyEl as HTMLElement).style.backgroundColor = mixedColor;
+    keyEl.classList.replace("bg-neutral-800", "bg-emerald");
     (keyEl as HTMLElement).title = `'${key}': ${count} (${percentage.toFixed(2)}%)`;
 
     const percentageEl = keyEl.querySelector(".key-percentage") as HTMLElement;
