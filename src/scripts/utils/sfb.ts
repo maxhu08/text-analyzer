@@ -8,10 +8,12 @@ export const updateSFBResults = (
   totalSfbsText.textContent = `Total SFBs: ${totalSfbs}`;
   uniqueSfbsText.textContent = `Unique SFBs: ${uniqueSfbs}`;
 
+  const sortedSfbs = Object.entries(sfbs).sort((a, b) => b[1] - a[1]);
+
   sfbsEl.innerHTML = "";
   sfbsEl.className = "grid grid-flow-row grid-cols-4 gap-2";
 
-  for (const [key, value] of Object.entries(sfbs)) {
+  for (const [key, value] of sortedSfbs) {
     const sfbEl = document.createElement("div");
     sfbEl.className = "grid grid-cols-[repeat(3,max-content)] gap-1 place-items-center";
 
@@ -29,9 +31,12 @@ export const updateSFBResults = (
       sfbEl.appendChild(keyDiv);
     }
 
+    // Calculate the percentage
+    const percentage = ((value / totalSfbs) * 100).toFixed(2);
+
     const valueText = document.createElement("span");
-    valueText.className = "text-lg text-white font-semibold";
-    valueText.textContent = value.toString();
+    valueText.className = "text-sm text-white font-semibold";
+    valueText.textContent = `${value} (${percentage}%)`;
 
     sfbEl.appendChild(valueText);
 
