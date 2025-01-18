@@ -2,7 +2,7 @@ import { sfbsEl } from "../ui";
 
 export const updateSFBResults = (sfbs: Record<string, number>) => {
   sfbsEl.innerHTML = "";
-  sfbsEl.className = "grid grid-flow-row grid-cols-2 gap-2";
+  sfbsEl.className = "grid grid-flow-row grid-cols-4 gap-2";
 
   for (const [key, value] of Object.entries(sfbs)) {
     const sfbEl = document.createElement("div");
@@ -11,7 +11,7 @@ export const updateSFBResults = (sfbs: Record<string, number>) => {
     for (const char of key) {
       const keyDiv = document.createElement("div");
       keyDiv.className =
-        "text-white flex flex-col items-center justify-center rounded-md w-16 h-16 relative";
+        "text-white flex flex-col items-center justify-center rounded-md w-12 h-12 relative";
       keyDiv.style.backgroundColor = "#262626"; // bg-neutral-800
 
       const keyText = document.createElement("span");

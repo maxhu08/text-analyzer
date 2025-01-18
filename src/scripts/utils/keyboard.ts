@@ -10,7 +10,7 @@ export const createKeyboardLayout = () => {
     for (const key of row) {
       const keyDiv = document.createElement("div");
       keyDiv.className =
-        "key text-white flex flex-col items-center justify-center rounded-md w-16 h-16 relative";
+        "key text-white flex flex-col items-center justify-center rounded-md w-12 h-12 relative";
       keyDiv.style.backgroundColor = "#262626"; // bg-neutral-800
       keyDiv.id = `key-${key}`;
 
