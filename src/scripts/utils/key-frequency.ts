@@ -1,5 +1,16 @@
-import { keyboardEl } from "../ui";
+import { keyboardEl, totalKeysText, uniqueKeysText } from "../ui";
 import { mixHexColors } from "./colors";
+
+export const updateKeyFrequencyResults = (
+  keyFrequencies: Record<string, number>,
+  textLength: number,
+  uniqueKeys: number
+) => {
+  totalKeysText.textContent = `Total Keys: ${textLength}`;
+  uniqueKeysText.textContent = `Unique Keys: ${uniqueKeys}`;
+
+  updateKeyboardVisualization(keyFrequencies, textLength);
+};
 
 const keyboardLayout = ["qwertyuiop[]", "asdfghjkl;'", "zxcvbnm,./"];
 
@@ -30,10 +41,7 @@ export const createKeyboardLayout = () => {
   });
 };
 
-export const updateKeyboardVisualization = (
-  charCounts: Record<string, number>,
-  totalChars: number
-) => {
+const updateKeyboardVisualization = (charCounts: Record<string, number>, totalChars: number) => {
   const keys = keyboardEl.querySelectorAll(".key");
 
   keys.forEach((keyEl) => {

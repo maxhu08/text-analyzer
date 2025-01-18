@@ -1,6 +1,13 @@
-import { sfbsEl } from "../ui";
+import { sfbsEl, totalSfbsText, uniqueSfbsText } from "../ui";
 
-export const updateSFBResults = (sfbs: Record<string, number>) => {
+export const updateSFBResults = (
+  sfbs: Record<string, number>,
+  totalSfbs: number,
+  uniqueSfbs: number
+) => {
+  totalSfbsText.textContent = `Total SFBs: ${totalSfbs}`;
+  uniqueSfbsText.textContent = `Unique SFBs: ${uniqueSfbs}`;
+
   sfbsEl.innerHTML = "";
   sfbsEl.className = "grid grid-flow-row grid-cols-4 gap-2";
 

@@ -1,12 +1,12 @@
 import { jsonOutputEl, resultsEl } from "../ui";
 import type { analyze } from "./analyze";
+import { updateKeyFrequencyResults } from "./key-frequency";
 
-import { updateKeyboardVisualization } from "./keyboard";
 import { updateSFBResults } from "./sfb";
 
 export const displayResult = (result: ReturnType<typeof analyze>) => {
-  updateKeyboardVisualization(result.keyFrequencies, result.textLength);
-  updateSFBResults(result.sfbs);
+  updateKeyFrequencyResults(result.keyFrequencies, result.textLength, result.uniqueKeys);
+  updateSFBResults(result.sfbs, result.totalSfbs, result.uniqueSfbs);
   jsonOutputEl.textContent = JSON.stringify(result, null, 2);
 
   resultsEl.classList.replace("hidden", "grid");

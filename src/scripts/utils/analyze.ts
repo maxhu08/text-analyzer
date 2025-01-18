@@ -72,7 +72,10 @@ export const analyze = (text: string) => {
 
   return {
     textLength: text.length,
+    uniqueKeys: charCounts.size,
     keyFrequencies: Object.fromEntries(charCounts),
+    totalSfbs: Array.from(sameFingerNgrams.values()).reduce((sum, count) => sum + count, 0),
+    uniqueSfbs: sameFingerNgrams.size,
     sfbs: Object.fromEntries(sameFingerNgrams)
   };
 };

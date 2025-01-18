@@ -1,7 +1,7 @@
 import { analyzeButtonEl, corpusTextareaEl } from "./ui";
 import { analyze } from "./utils/analyze";
 import { displayResult } from "./utils/display-result";
-import { createKeyboardLayout } from "./utils/keyboard";
+import { createKeyboardLayout } from "./utils/key-frequency";
 
 analyzeButtonEl.onclick = () => {
   const text = corpusTextareaEl.value.toLowerCase();
