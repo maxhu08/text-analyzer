@@ -20,14 +20,14 @@ export const createKeyboardLayout = () => {
 };
 
 export const updateKeyboardVisualization = (
-  charCounts: Map<string, number>,
+  charCounts: Record<string, number>,
   totalChars: number
 ) => {
   const keys = keyboardEl.querySelectorAll(".key");
 
   keys.forEach((keyEl) => {
     const key = keyEl.id.replace("key-", "");
-    const count = charCounts.get(key) || 0;
+    const count = charCounts[key] || 0;
     const percentage = totalChars ? (count / totalChars) * 100 : 0;
 
     let bgClass = "bg-neutral-800";

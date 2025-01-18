@@ -4,17 +4,11 @@ import { createKeyboardLayout, updateKeyboardVisualization } from "./utils/keybo
 
 analyzeButtonEl.onclick = () => {
   const text = corpusTextareaEl.value.toLowerCase();
-  const { keyFrequencies } = analyze(text);
+  const results = analyze(text);
 
-  resultsTextEl.textContent = Array.from(keyFrequencies)
-    .sort(([charA], [charB]) => charA.localeCompare(charB))
-    .map(([char, count]) => {
-      const percent = ((count / text.length) * 100).toFixed(2);
-      return `'${char}': ${count} (${percent}%)`;
-    })
-    .join(", ");
+  resultsTextEl.textContent = JSON.stringify(results, null, 2);
 
-  updateKeyboardVisualization(keyFrequencies, text.length);
+  updateKeyboardVisualization(results.keyFrequencies, text.length);
 };
 
 createKeyboardLayout();

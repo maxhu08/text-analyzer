@@ -5,5 +5,5 @@ export const analyze = (text: string) => {
     charCounts.set(char, (charCounts.get(char) || 0) + 1);
   }
 
-  return { keyFrequencies: charCounts };
+  return { keyFrequencies: Object.fromEntries(charCounts) };
 };
