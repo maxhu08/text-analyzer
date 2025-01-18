@@ -10,9 +10,9 @@
   <title>Text Analyzer</title>
 </head>
 
-<body class="min-h-screen bg-neutral-900">
-  <div class="grid min-h-screen place-items-center mb-20">
-    <div class="grid w-[60vw] grid-flow-row gap-2">
+<body dir="ltr" class="min-h-screen bg-neutral-900">
+  <div class="mx-auto grid w-[95%] grid-flow-row sm:w-[80%] md:w-[60%] lg:w-[40%]">
+    <main class="grid grid-flow-row pt-16 gap-4">
       <h1 class="text-4xl font-semibold text-white">Text Analyzer</h1>
       <p class="text-white">Paste corpus here:</p>
       <textarea id="corpus-textarea" type="text" autocomplete="off" rows="8"
@@ -21,11 +21,11 @@
         class="w-full cursor-pointer rounded-md bg-emerald-500 p-2 transition hover:bg-emerald-600">
         <span class="text-base text-white">analyze</span>
       </button>
-      <div id="keyboard" class="mt-4 grid gap-2"></div>
-      <div class="bg-neutral-800 rounded-md p-2">
-        <p id="results-text" class="text-white whitespace-pre-wrap">Awaiting results</p>
+      <div id="keyboard" class="grid gap-2"></div>
+      <div class="rounded-md bg-neutral-800 p-2">
+        <p id="results-text" class="whitespace-pre-wrap text-white">Awaiting results</p>
       </div>
-    </div>
+    </main>
   </div>
 </body>
 
