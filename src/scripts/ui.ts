@@ -5,6 +5,8 @@ export const resultsEl = document.getElementById("results") as HTMLDivElement;
 
 export const totalKeysText = document.getElementById("total-keys-text") as HTMLParagraphElement;
 export const uniqueKeysText = document.getElementById("unique-keys-text") as HTMLParagraphElement;
+export const leftKeysText = document.getElementById("left-keys-text") as HTMLParagraphElement;
+export const rightKeysText = document.getElementById("right-keys-text") as HTMLParagraphElement;
 export const keyboardEl = document.getElementById("keyboard") as HTMLDivElement;
 
 export const totalSfbsText = document.getElementById("total-sfbs-text") as HTMLParagraphElement;

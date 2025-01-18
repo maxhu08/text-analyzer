@@ -31,9 +31,26 @@ export const analyze = (text: string) => {
     p: "RP"
   };
 
+  const keyboardLayout = ["qwertyuiop[]", "asdfghjkl;'", "zxcvbnm,./"];
+  const validKeys = new Set(keyboardLayout.join(""));
+
+  let leftKeys = 0;
+  let rightKeys = 0;
+  let totalKeys = 0;
+
   // count character frequencies
   for (const char of text) {
     charCounts.set(char, (charCounts.get(char) || 0) + 1);
+
+    const fingerGroup = fingerMap[char.toLowerCase()];
+    if (fingerGroup?.[0] === "L") {
+      leftKeys++;
+    } else if (fingerGroup?.[0] === "R") {
+      rightKeys++;
+    }
+    if (validKeys.has(char.toLowerCase())) {
+      totalKeys++;
+    }
   }
 
   const ngramLength = 2;
@@ -72,8 +89,11 @@ export const analyze = (text: string) => {
 
   return {
     textLength: text.length,
+    totalKeys,
     uniqueKeys: charCounts.size,
     keyFrequencies: Object.fromEntries(charCounts),
+    leftKeys,
+    rightKeys,
     totalSfbs: Array.from(sameFingerNgrams.values()).reduce((sum, count) => sum + count, 0),
     uniqueSfbs: sameFingerNgrams.size,
     sfbs: Object.fromEntries(sameFingerNgrams)

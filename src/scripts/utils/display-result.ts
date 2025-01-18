@@ -5,7 +5,13 @@ import { updateKeyFrequencyResults } from "./key-frequency";
 import { updateSFBResults } from "./sfb";
 
 export const displayResult = (result: ReturnType<typeof analyze>) => {
-  updateKeyFrequencyResults(result.keyFrequencies, result.textLength, result.uniqueKeys);
+  updateKeyFrequencyResults(
+    result.keyFrequencies,
+    result.totalKeys,
+    result.uniqueKeys,
+    result.leftKeys,
+    result.rightKeys
+  );
   updateSFBResults(
     result.sfbs,
     result.totalSfbs,

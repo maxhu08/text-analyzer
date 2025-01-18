@@ -1,15 +1,22 @@
-import { keyboardEl, totalKeysText, uniqueKeysText } from "../ui";
+import { keyboardEl, leftKeysText, rightKeysText, totalKeysText, uniqueKeysText } from "../ui";
 import { mixHexColors } from "./colors";
 
 export const updateKeyFrequencyResults = (
   keyFrequencies: Record<string, number>,
-  textLength: number,
-  uniqueKeys: number
+  totalKeys: number,
+  uniqueKeys: number,
+  leftKeys: number,
+  rightKeys: number
 ) => {
-  totalKeysText.textContent = `Total Keys: ${textLength}`;
-  uniqueKeysText.textContent = `Unique Keys: ${uniqueKeys}`;
+  const leftPercent = ((leftKeys / totalKeys) * 100).toFixed(2);
+  const rightPercent = ((rightKeys / totalKeys) * 100).toFixed(2);
 
-  updateKeyboardVisualization(keyFrequencies, textLength);
+  totalKeysText.textContent = `Total Keys: ${totalKeys}`;
+  uniqueKeysText.textContent = `Unique Keys: ${uniqueKeys}`;
+  leftKeysText.textContent = `Left Hand Keys: ${leftKeys} (${leftPercent}%)`;
+  rightKeysText.textContent = `Right Hand Keys: ${rightKeys} (${rightPercent}%)`;
+
+  updateKeyboardVisualization(keyFrequencies, totalKeys);
 };
 
 const keyboardLayout = ["qwertyuiop[]", "asdfghjkl;'", "zxcvbnm,./"];
