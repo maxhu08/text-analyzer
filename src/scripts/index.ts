@@ -4,11 +4,11 @@ import { createKeyboardLayout, updateKeyboardVisualization } from "./utils/keybo
 
 analyzeButtonEl.onclick = () => {
   const text = corpusTextareaEl.value.toLowerCase();
-  const results = analyze(text);
+  const result = analyze(text);
 
-  resultsTextEl.textContent = JSON.stringify(results, null, 2);
+  resultsTextEl.textContent = JSON.stringify(result, null, 2);
 
-  updateKeyboardVisualization(results.keyFrequencies, text.length);
+  updateKeyboardVisualization(result.keyFrequencies, result.textLength);
 };
 
 createKeyboardLayout();
