@@ -1,6 +1,6 @@
 import { keyboardEl } from "../ui";
 
-const keyboardLayout = ["qwertyuiop", "asdfghjkl", "zxcvbnm"];
+const keyboardLayout = ["qwertyuiop[]", "asdfghjkl;'", "zxcvbnm,./"];
 
 export const createKeyboardLayout = () => {
   keyboardLayout.forEach((row) => {
@@ -41,7 +41,7 @@ export const updateKeyboardVisualization = (
     else if (percentage > 0) bgClass = "bg-emerald-800";
 
     (keyEl as HTMLElement).className =
-      `key flex items-center justify-center rounded w-10 h-10 ${bgClass}`;
+      `key ${bgClass} text-white flex items-center justify-center rounded w-10 h-10`;
     (keyEl as HTMLElement).title = `'${key}': ${count} (${percentage}%)`;
   });
 };
