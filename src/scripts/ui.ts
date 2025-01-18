@@ -3,3 +3,4 @@ export const analyzeButtonEl = document.getElementById("analyze-button") as HTML
 
 export const resultsTextEl = document.getElementById("results-text") as HTMLParagraphElement;
 export const keyboardEl = document.getElementById("keyboard") as HTMLDivElement;
+export const sfbsEl = document.getElementById("sfbs") as HTMLDivElement;
