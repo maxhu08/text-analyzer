@@ -41,15 +41,15 @@ export const createKeyboardLayout = () => {
   });
 };
 
-const updateKeyboardVisualization = (charCounts: Record<string, number>, totalChars: number) => {
+const updateKeyboardVisualization = (keyFrequencies: Record<string, number>, totalKeys: number) => {
   const keys = keyboardEl.querySelectorAll(".key");
 
   keys.forEach((keyEl) => {
     const key = keyEl.id.replace("key-", "");
-    const count = charCounts[key] || 0;
-    const percentage = totalChars ? (count / totalChars) * 100 : 0;
+    const count = keyFrequencies[key] || 0;
+    const percentage = totalKeys ? (count / totalKeys) * 100 : 0;
 
-    let color = "#10b981";
+    let color = "#10b981"; // bg-emerald-500
     let ratio = 1;
     if (percentage >= 7) ratio = 0.1;
     else if (percentage >= 5) ratio = 0.2;
@@ -68,8 +68,6 @@ const updateKeyboardVisualization = (charCounts: Record<string, number>, totalCh
     (keyEl as HTMLElement).title = `'${key}': ${count} (${percentage.toFixed(2)}%)`;
 
     const percentageEl = keyEl.querySelector(".key-percentage") as HTMLElement;
-    if (percentageEl) {
-      percentageEl.textContent = `${percentage.toFixed(2)}%`;
-    }
+    if (percentageEl) percentageEl.textContent = `${percentage.toFixed(2)}%`;
   });
 };

@@ -6,7 +6,13 @@ import { updateSFBResults } from "./sfb";
 
 export const displayResult = (result: ReturnType<typeof analyze>) => {
   updateKeyFrequencyResults(result.keyFrequencies, result.textLength, result.uniqueKeys);
-  updateSFBResults(result.sfbs, result.totalSfbs, result.uniqueSfbs);
+  updateSFBResults(
+    result.sfbs,
+    result.totalSfbs,
+    result.uniqueSfbs,
+    result.keyFrequencies,
+    result.textLength
+  );
   jsonOutputEl.textContent = JSON.stringify(result, null, 2);
 
   resultsEl.classList.replace("hidden", "grid");
