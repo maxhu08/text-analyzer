@@ -1,45 +1,47 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="styles/index.css" />
+    <link rel="stylesheet" type="text/css" href="styles/tailwind.css" />
+    <script src="scripts/index.ts" type="module" defer></script>
+    <title>Text Analyzer</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" type="text/css" href="styles/index.css" />
-  <link rel="stylesheet" type="text/css" href="styles/tailwind.css" />
-  <script src="scripts/index.ts" type="module" defer></script>
-  <title>Text Analyzer</title>
-</head>
-
-<body dir="ltr" class="min-h-screen bg-neutral-900">
-  <div class="mx-auto grid w-[95%] grid-flow-row sm:w-[80%] md:w-[60%] lg:w-[40%]">
-    <main class="grid grid-flow-row pt-16 gap-8">
-      <div class="grid grid-flow-row gap-2">
-        <h1 class="text-4xl font-semibold text-white">Text Analyzer</h1>
-        <textarea id="corpus-textarea" type="text" autocomplete="off" rows="8"
-          class="w-full resize-none rounded-md border-2 border-transparent bg-neutral-800 p-2 text-base text-white placeholder-neutral-500 outline-none transition duration-[250ms] focus-within:border-blue-500"
-          placeholder="paste corpus here:"></textarea>
-        <button id="analyze-button"
-          class="w-full cursor-pointer rounded-md bg-emerald-500 p-2 transition hover:bg-emerald-600">
-          <span class="text-base text-white">analyze</span>
-        </button>
-      </div>
-      <div id="results" class="hidden grid-flow-row gap-2">
-        <h1 class="text-4xl font-semibold text-white">Results</h1>
-        <p class="text-base text-white font-semibold">Key Frequencies</p>
-        <p id="total-keys-text" class="text-base text-white">Total Keys: </p>
-        <p id="unique-keys-text" class="text-base text-white">Unique Keys: </p>
-        <div id="keyboard" class="grid gap-2"></div>
-        <p class="text-base text-white font-semibold">SFBs</p>
-        <p id="total-sfbs-text" class="text-base text-white">Total SFBs: </p>
-        <p id="unique-sfbs-text" class="text-base text-white">Unique SFBs: </p>
-        <div id="sfbs"></div>
-        <p class="text-base text-white font-semibold">JSON</p>
-        <div class="rounded-md bg-neutral-800 p-2">
-          <p id="json-output" class="whitespace-pre-wrap text-white">Awaiting results</p>
+  <body dir="ltr" class="min-h-screen bg-neutral-900">
+    <div class="mx-auto grid w-[95%] grid-flow-row sm:w-[80%] md:w-[60%] lg:w-[40%]">
+      <main class="grid grid-flow-row gap-8 pt-16">
+        <div class="grid grid-flow-row gap-2">
+          <h1 class="text-4xl font-semibold text-white">Text Analyzer</h1>
+          <textarea
+            id="corpus-textarea"
+            type="text"
+            autocomplete="off"
+            rows="8"
+            class="scrollbar-hidden w-full resize-none rounded-md border-2 border-transparent bg-neutral-800 p-2 text-base text-white placeholder-neutral-500 outline-none transition duration-[250ms] focus-within:border-blue-500"
+            placeholder="paste corpus here:"
+          ></textarea>
+          <button id="analyze-button" class="w-full cursor-pointer rounded-md bg-emerald-500 p-2 transition hover:bg-emerald-600">
+            <span class="text-base text-white">analyze</span>
+          </button>
         </div>
-      </div>
-    </main>
-  </div>
-</body>
-
+        <div id="results" class="hidden grid-flow-row gap-2">
+          <h1 class="text-4xl font-semibold text-white">Results</h1>
+          <p class="text-base font-semibold text-white">Key Frequencies</p>
+          <p id="total-keys-text" class="text-base text-white">Total Keys:</p>
+          <p id="unique-keys-text" class="text-base text-white">Unique Keys:</p>
+          <div id="keyboard" class="grid gap-2"></div>
+          <p class="text-base font-semibold text-white">SFBs</p>
+          <p id="total-sfbs-text" class="text-base text-white">Total SFBs:</p>
+          <p id="unique-sfbs-text" class="text-base text-white">Unique SFBs:</p>
+          <div id="sfbs"></div>
+          <p class="text-base font-semibold text-white">JSON</p>
+          <div class="rounded-md bg-neutral-800 p-2">
+            <p id="json-output" class="whitespace-pre-wrap text-white">Awaiting results</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
 </html>

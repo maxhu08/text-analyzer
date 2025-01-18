@@ -11,6 +11,10 @@
   background: #10b981;
 }
 
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none !important;
+}
+
 ::selection {
   background-color: #ffffff20;
 }
