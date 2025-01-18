@@ -1,25 +1,20 @@
 import { analyzeButtonEl, corpusTextareaEl, resultsTextEl } from "./ui";
+import { analyze } from "./utils/analyze";
 import { createKeyboardLayout, updateKeyboardVisualization } from "./utils/keyboard";
 
 analyzeButtonEl.onclick = () => {
   const text = corpusTextareaEl.value.toLowerCase();
-  const totalChars = text.length;
-  const charCounts = new Map();
+  const { keyFrequencies } = analyze(text);
 
-  for (const char of text) {
-    charCounts.set(char, (charCounts.get(char) || 0) + 1);
-  }
-
-  const sortedEntries = Array.from(charCounts)
+  resultsTextEl.textContent = Array.from(keyFrequencies)
     .sort(([charA], [charB]) => charA.localeCompare(charB))
     .map(([char, count]) => {
-      const percent = ((count / totalChars) * 100).toFixed(2);
+      const percent = ((count / text.length) * 100).toFixed(2);
       return `'${char}': ${count} (${percent}%)`;
-    });
+    })
+    .join(", ");
 
-  resultsTextEl.textContent = sortedEntries.join(", ");
-
-  updateKeyboardVisualization(charCounts, totalChars);
+  updateKeyboardVisualization(keyFrequencies, text.length);
 };
 
 createKeyboardLayout();
