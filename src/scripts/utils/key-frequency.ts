@@ -1,3 +1,4 @@
+import { keyboardLayout } from "../constants/keyboard-layout";
 import { keyboardEl, leftKeysText, rightKeysText, totalKeysText, uniqueKeysText } from "../ui";
 import { mixHexColors } from "./colors";
 
@@ -18,8 +19,6 @@ export const updateKeyFrequencyResults = (
 
   updateKeyboardVisualization(keyFrequencies, totalKeys);
 };
-
-const keyboardLayout = ["qwertyuiop[]", "asdfghjkl;'", "zxcvbnm,./"];
 
 export const createKeyboardLayout = () => {
   keyboardLayout.forEach((row) => {

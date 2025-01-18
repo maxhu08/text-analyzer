@@ -1,3 +1,5 @@
+import { keyboardLayout } from "../constants/keyboard-layout";
+
 export const analyze = (text: string) => {
   const charCounts = new Map<string, number>();
   const sameFingerNgrams = new Map<string, number>();
@@ -31,7 +33,6 @@ export const analyze = (text: string) => {
     p: "RP"
   };
 
-  const keyboardLayout = ["qwertyuiop[]", "asdfghjkl;'", "zxcvbnm,./"];
   const validKeys = new Set(keyboardLayout.join(""));
 
   let leftKeys = 0;
