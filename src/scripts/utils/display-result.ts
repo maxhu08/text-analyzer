@@ -7,7 +7,12 @@ import { updateSFBResults } from "./sfb";
 
 export const displayResult = (result: ReturnType<typeof analyze>) => {
   updateKeyFrequencyResults(result.keyFrequencies, result.totalKeys, result.uniqueKeys);
-  updateAlternationResults(result.totalKeys, result.leftKeys, result.rightKeys);
+  updateAlternationResults(
+    result.totalKeys,
+    result.alternations,
+    result.leftKeys,
+    result.rightKeys
+  );
   updateSFBResults(
     result.sfbs,
     result.totalSfbs,

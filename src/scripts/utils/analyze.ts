@@ -8,6 +8,8 @@ export const analyze = (text: string) => {
   let leftKeys = 0;
   let rightKeys = 0;
   let totalKeys = 0;
+  let alternations = 0;
+  let prevHand: "L" | "R" | null = null;
 
   for (let i = 0; i < text.length; i++) {
     const char = text[i].toLowerCase();
@@ -19,8 +21,15 @@ export const analyze = (text: string) => {
       totalKeys++;
 
       const fingerGroup = fingerMap.get(char);
-      if (fingerGroup?.[0] === "L") leftKeys++;
-      else if (fingerGroup?.[0] === "R") rightKeys++;
+      if (fingerGroup?.[0] === "L") {
+        leftKeys++;
+        if (prevHand === "R") alternations++;
+        prevHand = "L";
+      } else if (fingerGroup?.[0] === "R") {
+        rightKeys++;
+        if (prevHand === "L") alternations++;
+        prevHand = "R";
+      }
     }
 
     // sfbs
@@ -39,6 +48,7 @@ export const analyze = (text: string) => {
     totalKeys,
     uniqueKeys: charCounts.size,
     keyFrequencies: Object.fromEntries(charCounts),
+    alternations,
     leftKeys,
     rightKeys,
     totalSfbs: Array.from(sfbs.values()).reduce((sum, count) => sum + count, 0),

@@ -7,6 +7,8 @@ export const totalKeysText = document.getElementById("total-keys-text") as HTMLP
 export const uniqueKeysText = document.getElementById("unique-keys-text") as HTMLParagraphElement;
 export const keyboardEl = document.getElementById("keyboard") as HTMLDivElement;
 
+// prettier-ignore
+export const alternationsText = document.getElementById("alternations-text") as HTMLParagraphElement;
 export const alternationsBarEl = document.getElementById("alternations-bar") as HTMLDivElement;
 export const leftKeysText = document.getElementById("left-keys-text") as HTMLParagraphElement;
 export const rightKeysText = document.getElementById("right-keys-text") as HTMLParagraphElement;
