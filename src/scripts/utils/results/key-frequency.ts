@@ -1,3 +1,4 @@
+import { shiftIcon } from "../../constants/keyboard-icons";
 import { keyboardEl, totalKeysText, uniqueKeysText } from "../../ui";
 import { mixHexColors } from "../colors";
 import { keyboardLayoutStore } from "../keyboard-layout-store";
@@ -29,7 +30,7 @@ export const createKeyboardLayout = () => {
       rowDiv.className = "grid gap-1 items-center";
 
       if (rowIndex === 0) {
-        rowDiv.classList.add("grid-cols-[max-content_max-content]");
+        rowDiv.classList.add("grid-cols-[max-content_auto]");
       } else if (specialKeys[rowIndex]?.[0] || specialKeys[rowIndex]?.[1]) {
         rowDiv.classList.add("grid-cols-[1fr_max-content_1fr]");
       } else {
@@ -38,7 +39,7 @@ export const createKeyboardLayout = () => {
 
       // add left special key if present
       if (specialKeys[rowIndex]?.[0]) {
-        const leftSpecialKeyDiv = createSpecialKeyElement(specialKeys[rowIndex][0]);
+        const leftSpecialKeyDiv = createSpecialKeyElement(shiftIcon, specialKeys[rowIndex][0]);
         rowDiv.appendChild(leftSpecialKeyDiv);
       }
 
@@ -59,13 +60,13 @@ export const createKeyboardLayout = () => {
 
       // add \ key
       if (rowIndex === 1) {
-        const keyEl = createSpecialKeyElement(row[row.length - 1]);
+        const keyEl = createKeyElement(row[row.length - 1], true);
         rowDiv.appendChild(keyEl);
       }
 
       // add right special key if present
       if (specialKeys[rowIndex]?.[1]) {
-        const rightSpecialKeyDiv = createSpecialKeyElement(specialKeys[rowIndex][1]);
+        const rightSpecialKeyDiv = createSpecialKeyElement(shiftIcon, specialKeys[rowIndex][1]);
         rowDiv.appendChild(rightSpecialKeyDiv);
       }
 
@@ -73,10 +74,9 @@ export const createKeyboardLayout = () => {
     });
 };
 
-const createKeyElement = (key: string) => {
+const createKeyElement = (key: string, specialWidth: boolean = false) => {
   const keyDiv = document.createElement("div");
-  keyDiv.className =
-    "key text-white flex flex-col items-center justify-center rounded-md w-12 h-12 relative bg-gray-800";
+  keyDiv.className = `key text-white flex flex-col items-center justify-center rounded-md ${!specialWidth ? "w-12" : ""}  h-12 relative bg-gray-800`;
   keyDiv.id = `key-${key}`;
 
   const keyText = document.createElement("span");
@@ -93,17 +93,17 @@ const createKeyElement = (key: string) => {
   return keyDiv;
 };
 
-const createSpecialKeyElement = (keyName?: string): HTMLDivElement => {
+const createSpecialKeyElement = (icon: string, key: string): HTMLDivElement => {
   const keyDiv = document.createElement("div");
   keyDiv.className =
-    "key special-key text-white flex flex-col items-center justify-center rounded-md h-12 relative bg-gray-700";
-  keyDiv.id = `key-${keyName?.toLowerCase() || ""}`;
+    "key special-key text-white flex flex-col items-center justify-center rounded-md w-full h-12 relative bg-gray-700";
+  keyDiv.id = `key-${key?.toLowerCase() || ""}`;
 
-  const keyText = document.createElement("span");
-  keyText.className = "key-text text-lg font-semibold";
-  keyText.textContent = keyName || "";
+  const svgContainer = document.createElement("div");
+  svgContainer.className = "key-icon w-6 h-6";
+  svgContainer.innerHTML = icon;
+  keyDiv.appendChild(svgContainer);
 
-  keyDiv.appendChild(keyText);
   return keyDiv;
 };
 
