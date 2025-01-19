@@ -1,4 +1,4 @@
-import { alternationsBarEl, alternationsText, leftKeysText, rightKeysText } from "../ui";
+import { alternationsBarEl, alternationsText, leftKeysText, rightKeysText } from "../../ui";
 
 export const updateAlternationResults = (
   totalKeys: number,

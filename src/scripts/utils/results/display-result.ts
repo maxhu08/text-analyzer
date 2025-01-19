@@ -1,8 +1,8 @@
-import { jsonOutputEl, resultsEl } from "../ui";
-import { updateAlternationResults } from "./alternation";
-import type { analyze } from "./analyze";
-import { updateKeyFrequencyResults } from "./key-frequency";
+import { jsonOutputEl, resultsEl } from "../../ui";
+import type { analyze } from "../analyze";
 
+import { updateAlternationResults } from "./alternation";
+import { updateKeyFrequencyResults } from "./key-frequency";
 import { updateSFBResults } from "./sfb";
 
 export const displayResult = (result: ReturnType<typeof analyze>) => {

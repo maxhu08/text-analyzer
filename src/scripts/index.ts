@@ -1,7 +1,7 @@
 import { analyzeButtonEl, textTextareaEl } from "./ui";
 import { analyze } from "./utils/analyze";
-import { displayResult } from "./utils/display-result";
-import { createKeyboardLayout } from "./utils/key-frequency";
+import { displayResult } from "./utils/results/display-result";
+import { createKeyboardLayout } from "./utils/results/key-frequency";
 import { getTextLocalStorage, setTextLocalStorage } from "./utils/text-store";
 
 analyzeButtonEl.onclick = () => {

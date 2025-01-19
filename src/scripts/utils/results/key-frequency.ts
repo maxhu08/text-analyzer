@@ -1,6 +1,6 @@
-import { keyboardLayoutSplit } from "../constants/keyboard-layout";
-import { keyboardEl, leftKeysText, rightKeysText, totalKeysText, uniqueKeysText } from "../ui";
-import { mixHexColors } from "./colors";
+import { keyboardLayoutSplit } from "../../constants/keyboard-layout";
+import { keyboardEl, totalKeysText, uniqueKeysText } from "../../ui";
+import { mixHexColors } from "../colors";
 
 export const updateKeyFrequencyResults = (
   keyFrequencies: Record<string, number>,

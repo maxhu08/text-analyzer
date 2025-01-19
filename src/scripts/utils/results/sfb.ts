@@ -1,5 +1,5 @@
-import { sfbsEl, totalSfbsText, uniqueSfbsText } from "../ui";
-import { mixHexColors } from "./colors";
+import { sfbsEl, totalSfbsText, uniqueSfbsText } from "../../ui";
+import { mixHexColors } from "../colors";
 
 export const updateSFBResults = (
   sfbs: Record<string, number>,
