@@ -43,7 +43,5 @@ export const getFingerMap = (keyboardLayoutSplit: string[]): Map<string, FingerA
   keyboardFingerMap.set(row3[8], "RR");
   keyboardFingerMap.set(row3[9], "RP");
 
-  console.log(keyboardFingerMap);
-
   return keyboardFingerMap;
 };
