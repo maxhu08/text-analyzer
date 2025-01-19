@@ -4,16 +4,26 @@ import { getFingerMap } from "./finger-map";
 export type KeyboardLayout = keyof typeof layouts;
 
 export const keyboardLayoutStore = () => {
-  const splitLayout = getKeyboardLayoutLocalStorage()
-    .layout.split("\n")
-    .map((line: string) => line.trim().replace(/\s+/g, ""));
-
-  splitLayout.shift();
-
   return {
     getLayout: () => getKeyboardLayoutLocalStorage(),
-    getLayoutSplit: () => splitLayout,
-    getFingerMap: () => getFingerMap(splitLayout),
+    getLayoutSplit: () => {
+      const splitLayout = getKeyboardLayoutLocalStorage()
+        .layout.split("\n")
+        .map((line: string) => line.trim().replace(/\s+/g, ""));
+
+      splitLayout.shift();
+
+      return splitLayout;
+    },
+    getFingerMap: () => {
+      const splitLayout = getKeyboardLayoutLocalStorage()
+        .layout.split("\n")
+        .map((line: string) => line.trim().replace(/\s+/g, ""));
+
+      splitLayout.shift();
+
+      return getFingerMap(splitLayout);
+    },
     setLayout: (layout: KeyboardLayout) => {
       setKeyboardLayoutLocalStorage({ name: layout, layout: layouts[layout] });
     }
