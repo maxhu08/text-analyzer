@@ -21,9 +21,12 @@ export const updateKeyFrequencyResults = (
 };
 
 export const createKeyboardLayout = () => {
-  keyboardLayoutSplit.forEach((row) => {
+  keyboardLayoutSplit.forEach((row, rowIndex) => {
     const rowDiv = document.createElement("div");
     rowDiv.className = "flex justify-center gap-1";
+
+    if (rowIndex > 0) rowDiv.classList.add("pr-12");
+
     for (const key of row) {
       const keyDiv = document.createElement("div");
       keyDiv.className =
