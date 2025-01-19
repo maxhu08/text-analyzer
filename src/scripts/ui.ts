@@ -1,3 +1,4 @@
+export const layoutsEl = document.getElementById("layouts") as HTMLTextAreaElement;
 export const textTextareaEl = document.getElementById("text-textarea") as HTMLTextAreaElement;
 export const analyzeButtonEl = document.getElementById("analyze-button") as HTMLButtonElement;
 

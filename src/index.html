@@ -15,9 +15,14 @@
     <main class="grid grid-flow-row gap-8 pt-16">
       <div class="grid grid-flow-row gap-2">
         <h1 class="text-4xl font-semibold text-white">Text Analyzer</h1>
+        <div>
+          <p class="text-base font-semibold text-white">Layout</p>
+          <div id="layouts" class="grid grid-flow-row grid-cols-3 gap-2"></div>
+        </div>
         <textarea id="text-textarea" type="text" autocomplete="off" rows="8"
           class="scrollbar-hidden w-full resize-none rounded-md border-2 border-transparent bg-neutral-800 p-2 text-base text-white placeholder-neutral-500 outline-none transition duration-[250ms] focus-within:border-blue-500"
           placeholder="input text..."></textarea>
+
         <button id="analyze-button"
           class="w-full cursor-pointer rounded-md bg-emerald-500 p-2 transition hover:bg-emerald-600">
           <span class="text-base text-white">analyze</span>
