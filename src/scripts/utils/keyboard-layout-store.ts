@@ -1,7 +1,7 @@
 import { layouts } from "../constants/keyboard-layout";
 import { getFingerMap } from "./finger-map";
 
-type Layout = keyof typeof layouts;
+export type KeyboardLayout = keyof typeof layouts;
 
 export const keyboardLayoutStore = () => {
   const splitLayout = getKeyboardLayoutLocalStorage()
@@ -12,7 +12,7 @@ export const keyboardLayoutStore = () => {
     getLayout: () => getKeyboardLayoutLocalStorage(),
     getLayoutSplit: () => splitLayout,
     getFingerMap: () => getFingerMap(splitLayout),
-    setLayout: (layout: Layout) => {
+    setLayout: (layout: KeyboardLayout) => {
       setKeyboardLayoutLocalStorage({ name: layout, layout: layouts[layout] });
     }
   };
