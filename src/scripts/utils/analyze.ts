@@ -1,6 +1,10 @@
-import { fingerMap, keyboardLayoutSplit } from "../constants/keyboard-layout";
+import { keyboardLayoutStore } from "./keyboard-layout-store";
 
 export const analyze = (text: string) => {
+  const kbStore = keyboardLayoutStore();
+  const keyboardLayoutSplit = kbStore.getLayoutSplit();
+  const fingerMap = kbStore.getFingerMap();
+
   const validKeys = new Set(keyboardLayoutSplit.join(""));
   const charCounts = new Map<string, number>();
   const sfbs = new Map<string, number>();

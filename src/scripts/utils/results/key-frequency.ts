@@ -1,6 +1,6 @@
-import { keyboardLayoutSplit } from "../../constants/keyboard-layout";
 import { keyboardEl, totalKeysText, uniqueKeysText } from "../../ui";
 import { mixHexColors } from "../colors";
+import { keyboardLayoutStore } from "../keyboard-layout-store";
 
 export const updateKeyFrequencyResults = (
   keyFrequencies: Record<string, number>,
@@ -14,33 +14,35 @@ export const updateKeyFrequencyResults = (
 };
 
 export const createKeyboardLayout = () => {
-  keyboardLayoutSplit.forEach((row, rowIndex) => {
-    const rowDiv = document.createElement("div");
-    rowDiv.className = "flex justify-center gap-1";
+  keyboardLayoutStore()
+    .getLayoutSplit()
+    .forEach((row: string, rowIndex: number) => {
+      const rowDiv = document.createElement("div");
+      rowDiv.className = "flex justify-center gap-1";
 
-    if (rowIndex > 0) rowDiv.classList.add("pr-12");
+      if (rowIndex > 0) rowDiv.classList.add("pr-12");
 
-    for (const key of row) {
-      const keyDiv = document.createElement("div");
-      keyDiv.className =
-        "key text-white flex flex-col items-center justify-center rounded-md w-12 h-12 relative";
-      keyDiv.style.backgroundColor = "#262626"; // bg-neutral-800
-      keyDiv.id = `key-${key}`;
+      for (const key of row) {
+        const keyDiv = document.createElement("div");
+        keyDiv.className =
+          "key text-white flex flex-col items-center justify-center rounded-md w-12 h-12 relative";
+        keyDiv.style.backgroundColor = "#262626"; // bg-neutral-800
+        keyDiv.id = `key-${key}`;
 
-      const keyText = document.createElement("span");
-      keyText.className = "key-text text-lg font-semibold";
-      keyText.textContent = key;
+        const keyText = document.createElement("span");
+        keyText.className = "key-text text-lg font-semibold";
+        keyText.textContent = key;
 
-      const keyPercentage = document.createElement("span");
-      keyPercentage.className = "key-percentage text-xs";
-      keyPercentage.textContent = "0.00%";
+        const keyPercentage = document.createElement("span");
+        keyPercentage.className = "key-percentage text-xs";
+        keyPercentage.textContent = "0.00%";
 
-      keyDiv.appendChild(keyText);
-      keyDiv.appendChild(keyPercentage);
-      rowDiv.appendChild(keyDiv);
-    }
-    keyboardEl.appendChild(rowDiv);
-  });
+        keyDiv.appendChild(keyText);
+        keyDiv.appendChild(keyPercentage);
+        rowDiv.appendChild(keyDiv);
+      }
+      keyboardEl.appendChild(rowDiv);
+    });
 };
 
 const updateKeyboardVisualization = (keyFrequencies: Record<string, number>, totalKeys: number) => {
