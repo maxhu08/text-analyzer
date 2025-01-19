@@ -2,7 +2,6 @@ import { analyzeButtonEl, textTextareaEl } from "./ui";
 import { analyze } from "./utils/analyze";
 import { handleLayouts } from "./utils/handle-layouts";
 import { displayResult } from "./utils/results/display-result";
-import { createKeyboardLayout } from "./utils/results/key-frequency";
 import { getTextLocalStorage, setTextLocalStorage } from "./utils/text-store";
 
 handleLayouts();
@@ -20,5 +19,3 @@ if (text) textTextareaEl.value = text;
 textTextareaEl.addEventListener("input", (e) => {
   setTextLocalStorage((e.target as HTMLTextAreaElement).value);
 });
-
-createKeyboardLayout();

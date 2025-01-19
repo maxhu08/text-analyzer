@@ -46,6 +46,9 @@ export const createKeyboardLayout = () => {
 };
 
 const updateKeyboardVisualization = (keyFrequencies: Record<string, number>, totalKeys: number) => {
+  keyboardEl.innerHTML = "";
+  createKeyboardLayout();
+
   const keys = keyboardEl.querySelectorAll(".key");
 
   keys.forEach((keyEl) => {
