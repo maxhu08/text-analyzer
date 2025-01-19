@@ -14,35 +14,98 @@ export const updateKeyFrequencyResults = (
 };
 
 export const createKeyboardLayout = () => {
+  const specialKeys: [string, string][] = [
+    ["", "Backspace"],
+    ["Tab", ""],
+    ["Caps", "Enter"],
+    ["LShift", "RShift"]
+  ];
+
   keyboardLayoutStore()
     .getLayoutSplit()
-    .forEach((row: string, rowIndex: number) => {
+    .forEach((row: string, index: number) => {
       const rowDiv = document.createElement("div");
-      rowDiv.className = "flex justify-center gap-1";
+      const rowIndex = index - 1;
 
-      if (rowIndex > 0) rowDiv.classList.add("pr-12");
+      rowDiv.className = "grid gap-1 items-center";
 
-      for (const key of row) {
-        const keyDiv = document.createElement("div");
-        keyDiv.className =
-          "key text-white flex flex-col items-center justify-center rounded-md w-12 h-12 relative";
-        keyDiv.style.backgroundColor = "#262626"; // bg-neutral-800
-        keyDiv.id = `key-${key}`;
-
-        const keyText = document.createElement("span");
-        keyText.className = "key-text text-lg font-semibold";
-        keyText.textContent = key;
-
-        const keyPercentage = document.createElement("span");
-        keyPercentage.className = "key-percentage text-xs";
-        keyPercentage.textContent = "0.00%";
-
-        keyDiv.appendChild(keyText);
-        keyDiv.appendChild(keyPercentage);
-        rowDiv.appendChild(keyDiv);
+      if (rowIndex === 0) {
+        rowDiv.classList.add("grid-cols-[max-content_max-content]");
+      } else if (specialKeys[rowIndex]?.[0] || specialKeys[rowIndex]?.[1]) {
+        rowDiv.classList.add("grid-cols-[1fr_max-content_1fr]");
+      } else {
+        rowDiv.classList.add("justify-center");
       }
+
+      // add left special key if present
+      if (specialKeys[rowIndex]?.[0]) {
+        const leftSpecialKeyDiv = createSpecialKeyElement(specialKeys[rowIndex][0]);
+        rowDiv.appendChild(leftSpecialKeyDiv);
+      }
+
+      // add regular keys
+      const keyContainer = document.createElement("div");
+      keyContainer.className = "flex gap-1";
+      for (let i = 0; i < row.length; i++) {
+        // avoid \ key
+        if (!(rowIndex === 1 && i === row.length - 1)) {
+          const key = row[i];
+
+          const keyEl = createKeyElement(key);
+          keyContainer.appendChild(keyEl);
+        }
+      }
+
+      rowDiv.appendChild(keyContainer);
+
+      // add \ key
+      if (rowIndex === 1) {
+        const keyEl = createSpecialKeyElement(row[row.length - 1]);
+        rowDiv.appendChild(keyEl);
+      }
+
+      // add right special key if present
+      if (specialKeys[rowIndex]?.[1]) {
+        const rightSpecialKeyDiv = createSpecialKeyElement(specialKeys[rowIndex][1]);
+        rowDiv.appendChild(rightSpecialKeyDiv);
+      }
+
       keyboardEl.appendChild(rowDiv);
     });
+};
+
+const createKeyElement = (key: string) => {
+  const keyDiv = document.createElement("div");
+  keyDiv.className =
+    "key text-white flex flex-col items-center justify-center rounded-md w-12 h-12 relative bg-gray-800";
+  keyDiv.id = `key-${key}`;
+
+  const keyText = document.createElement("span");
+  keyText.className = "key-text text-lg font-semibold";
+  keyText.textContent = key;
+
+  const keyPercentage = document.createElement("span");
+  keyPercentage.className = "key-percentage text-xs";
+  keyPercentage.textContent = "0.00%";
+
+  keyDiv.appendChild(keyText);
+  keyDiv.appendChild(keyPercentage);
+
+  return keyDiv;
+};
+
+const createSpecialKeyElement = (keyName?: string): HTMLDivElement => {
+  const keyDiv = document.createElement("div");
+  keyDiv.className =
+    "key special-key text-white flex flex-col items-center justify-center rounded-md h-12 relative bg-gray-700";
+  keyDiv.id = `key-${keyName?.toLowerCase() || ""}`;
+
+  const keyText = document.createElement("span");
+  keyText.className = "key-text text-lg font-semibold";
+  keyText.textContent = keyName || "";
+
+  keyDiv.appendChild(keyText);
+  return keyDiv;
 };
 
 const updateKeyboardVisualization = (keyFrequencies: Record<string, number>, totalKeys: number) => {
