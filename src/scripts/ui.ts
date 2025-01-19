@@ -1,4 +1,4 @@
-export const corpusTextareaEl = document.getElementById("corpus-textarea") as HTMLTextAreaElement;
+export const textTextareaEl = document.getElementById("text-textarea") as HTMLTextAreaElement;
 export const analyzeButtonEl = document.getElementById("analyze-button") as HTMLButtonElement;
 
 export const resultsEl = document.getElementById("results") as HTMLDivElement;
