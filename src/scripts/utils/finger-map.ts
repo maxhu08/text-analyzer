@@ -27,9 +27,9 @@ export const getFingerMap = (keyboardLayoutSplit: string[]): Map<string, FingerA
   keyboardFingerMap.set(row2[5], "RI");
   keyboardFingerMap.set(row2[6], "RI");
   keyboardFingerMap.set(row2[7], "RM");
-  keyboardFingerMap.set(row2[8], "RM");
-  keyboardFingerMap.set(row2[9], "RR");
-  keyboardFingerMap.set(row2[10], "RR");
+  keyboardFingerMap.set(row2[8], "RR");
+  keyboardFingerMap.set(row2[9], "RP");
+  keyboardFingerMap.set(row2[10], "RP");
 
   const row3 = keyboardLayoutSplit[2];
   keyboardFingerMap.set(row3[0], "LP");
@@ -40,8 +40,10 @@ export const getFingerMap = (keyboardLayoutSplit: string[]): Map<string, FingerA
   keyboardFingerMap.set(row3[5], "RI");
   keyboardFingerMap.set(row3[6], "RI");
   keyboardFingerMap.set(row3[7], "RM");
-  keyboardFingerMap.set(row3[8], "RM");
-  keyboardFingerMap.set(row3[9], "RR");
+  keyboardFingerMap.set(row3[8], "RR");
+  keyboardFingerMap.set(row3[9], "RP");
+
+  console.log(keyboardFingerMap);
 
   return keyboardFingerMap;
 };
