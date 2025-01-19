@@ -1,3 +1,5 @@
 # text-analyzer
 
-todo: write readme
+a tool to analyze the typng stats on any piece of text
+
+note: very wip
