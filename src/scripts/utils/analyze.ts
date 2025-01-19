@@ -18,15 +18,15 @@ export const analyze = (text: string) => {
       charCounts.set(char, (charCounts.get(char) || 0) + 1);
       totalKeys++;
 
-      const fingerGroup = fingerMap[char];
+      const fingerGroup = fingerMap.get(char);
       if (fingerGroup?.[0] === "L") leftKeys++;
       else if (fingerGroup?.[0] === "R") rightKeys++;
     }
 
     // sfbs
     if (validKeys.has(char) && validKeys.has(nextChar)) {
-      const finger1 = fingerMap[char];
-      const finger2 = fingerMap[nextChar];
+      const finger1 = fingerMap.get(char);
+      const finger2 = fingerMap.get(nextChar);
       if (finger1 && finger2 && finger1 === finger2) {
         const bigram = char + nextChar;
         sfbs.set(bigram, (sfbs.get(bigram) || 0) + 1);
