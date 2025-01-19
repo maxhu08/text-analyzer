@@ -1,35 +1,6 @@
-import { keyboardLayoutSplit } from "../constants/keyboard-layout";
+import { fingerMap, keyboardLayoutSplit } from "../constants/keyboard-layout";
 
 export const analyze = (text: string) => {
-  const fingerMap: Record<string, string> = {
-    q: "LP",
-    a: "LP",
-    z: "LP",
-    w: "LR",
-    s: "LR",
-    x: "LR",
-    e: "LM",
-    d: "LM",
-    c: "LM",
-    r: "LI",
-    f: "LI",
-    v: "LI",
-    t: "LI",
-    g: "LI",
-    b: "LI",
-    y: "RI",
-    h: "RI",
-    n: "RI",
-    u: "RI",
-    j: "RI",
-    m: "RI",
-    i: "RM",
-    k: "RM",
-    o: "RR",
-    l: "RR",
-    p: "RP"
-  };
-
   const validKeys = new Set(keyboardLayoutSplit.join(""));
   const charCounts = new Map<string, number>();
   const sfbs = new Map<string, number>();
