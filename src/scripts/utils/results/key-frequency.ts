@@ -1,4 +1,10 @@
-import { shiftIcon } from "../../constants/keyboard-icons";
+import {
+  backspaceIcon,
+  tabIcon,
+  capsIcon,
+  returnIcon,
+  shiftIcon
+} from "../../constants/keyboard-icons";
 import { keyboardEl, totalKeysText, uniqueKeysText } from "../../ui";
 import { mixHexColors } from "../colors";
 import { keyboardLayoutStore } from "../keyboard-layout-store";
@@ -22,6 +28,15 @@ export const createKeyboardLayout = () => {
     ["LShift", "RShift"]
   ];
 
+  const specialKeyIcons: Record<string, string> = {
+    Backspace: backspaceIcon,
+    Tab: tabIcon,
+    Caps: capsIcon,
+    Enter: returnIcon,
+    LShift: shiftIcon,
+    RShift: shiftIcon
+  };
+
   keyboardLayoutStore()
     .getLayoutSplit()
     .forEach((row: string, rowIndex: number) => {
@@ -39,7 +54,10 @@ export const createKeyboardLayout = () => {
 
       // add left special key if present
       if (specialKeys[rowIndex]?.[0]) {
-        const leftSpecialKeyDiv = createSpecialKeyElement(shiftIcon, specialKeys[rowIndex][0]);
+        const leftSpecialKeyDiv = createSpecialKeyElement(
+          specialKeyIcons[specialKeys[rowIndex][0]],
+          specialKeys[rowIndex][0]
+        );
         rowDiv.appendChild(leftSpecialKeyDiv);
       }
 
@@ -66,7 +84,10 @@ export const createKeyboardLayout = () => {
 
       // add right special key if present
       if (specialKeys[rowIndex]?.[1]) {
-        const rightSpecialKeyDiv = createSpecialKeyElement(shiftIcon, specialKeys[rowIndex][1]);
+        const rightSpecialKeyDiv = createSpecialKeyElement(
+          specialKeyIcons[specialKeys[rowIndex][1]],
+          specialKeys[rowIndex][1]
+        );
         rowDiv.appendChild(rightSpecialKeyDiv);
       }
 
@@ -102,6 +123,10 @@ const createSpecialKeyElement = (icon: string, key: string): HTMLDivElement => {
   const svgContainer = document.createElement("div");
   svgContainer.className = "key-icon w-6 h-6";
   svgContainer.innerHTML = icon;
+
+  const svg = svgContainer.querySelector("svg");
+  if (svg) svg.style.transform = "scale(0.75)";
+
   keyDiv.appendChild(svgContainer);
 
   return keyDiv;
