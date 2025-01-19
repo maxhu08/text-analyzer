@@ -1,4 +1,4 @@
-import { keyboardLayout } from "../constants/keyboard-layout";
+import { keyboardLayoutSplit } from "../constants/keyboard-layout";
 import { keyboardEl, leftKeysText, rightKeysText, totalKeysText, uniqueKeysText } from "../ui";
 import { mixHexColors } from "./colors";
 
@@ -21,7 +21,7 @@ export const updateKeyFrequencyResults = (
 };
 
 export const createKeyboardLayout = () => {
-  keyboardLayout.forEach((row) => {
+  keyboardLayoutSplit.forEach((row) => {
     const rowDiv = document.createElement("div");
     rowDiv.className = "flex justify-center gap-1";
     for (const key of row) {

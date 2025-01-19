@@ -1,4 +1,4 @@
-import { keyboardLayout } from "../constants/keyboard-layout";
+import { keyboardLayoutSplit } from "../constants/keyboard-layout";
 
 export const analyze = (text: string) => {
   const fingerMap: Record<string, string> = {
@@ -30,7 +30,7 @@ export const analyze = (text: string) => {
     p: "RP"
   };
 
-  const validKeys = new Set(keyboardLayout.join(""));
+  const validKeys = new Set(keyboardLayoutSplit.join(""));
   const charCounts = new Map<string, number>();
   const sfbs = new Map<string, number>();
 
