@@ -23,9 +23,8 @@ export const createKeyboardLayout = () => {
 
   keyboardLayoutStore()
     .getLayoutSplit()
-    .forEach((row: string, index: number) => {
+    .forEach((row: string, rowIndex: number) => {
       const rowDiv = document.createElement("div");
-      const rowIndex = index - 1;
 
       rowDiv.className = "grid gap-1 items-center";
 

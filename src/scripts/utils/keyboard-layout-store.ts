@@ -8,6 +8,8 @@ export const keyboardLayoutStore = () => {
     .layout.split("\n")
     .map((line: string) => line.trim().replace(/\s+/g, ""));
 
+  splitLayout.shift();
+
   return {
     getLayout: () => getKeyboardLayoutLocalStorage(),
     getLayoutSplit: () => splitLayout,

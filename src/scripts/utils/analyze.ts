@@ -4,10 +4,13 @@ export const analyze = (text: string) => {
   const kbStore = keyboardLayoutStore();
   const keyboardLayoutSplit = kbStore.getLayoutSplit();
   const fingerMap = kbStore.getFingerMap();
+  const topRow = new Set(kbStore.getLayoutSplit()[1]);
+  const bottomRow = new Set(kbStore.getLayoutSplit()[3]);
 
   const validKeys = new Set(keyboardLayoutSplit.join(""));
   const charCounts = new Map<string, number>();
   const sfbs = new Map<string, number>();
+  const scissors = new Map<string, number>();
 
   let leftKeys = 0;
   let rightKeys = 0;
@@ -45,6 +48,24 @@ export const analyze = (text: string) => {
         sfbs.set(bigram, (sfbs.get(bigram) || 0) + 1);
       }
     }
+
+    // scissors
+    if (validKeys.has(char) && validKeys.has(nextChar)) {
+      const hand1 = fingerMap.get(char)?.[0];
+      const hand2 = fingerMap.get(nextChar)?.[0];
+
+      const isScissor =
+        hand1 &&
+        hand2 &&
+        hand1 === hand2 && // same hand
+        ((topRow.has(char) && bottomRow.has(nextChar)) ||
+          (bottomRow.has(char) && topRow.has(nextChar))); // top-to-bottom or vice versa
+
+      if (isScissor) {
+        const bigram = char + nextChar;
+        scissors.set(bigram, (scissors.get(bigram) || 0) + 1);
+      }
+    }
   }
 
   return {
@@ -57,6 +78,9 @@ export const analyze = (text: string) => {
     rightKeys,
     totalSfbs: Array.from(sfbs.values()).reduce((sum, count) => sum + count, 0),
     uniqueSfbs: sfbs.size,
-    sfbs: Object.fromEntries(sfbs)
+    sfbs: Object.fromEntries(sfbs),
+    totalScissors: Array.from(scissors.values()).reduce((sum, count) => sum + count, 0),
+    uniqueScissors: scissors.size,
+    scissors: Object.fromEntries(scissors)
   };
 };
