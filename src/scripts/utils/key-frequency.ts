@@ -5,17 +5,10 @@ import { mixHexColors } from "./colors";
 export const updateKeyFrequencyResults = (
   keyFrequencies: Record<string, number>,
   totalKeys: number,
-  uniqueKeys: number,
-  leftKeys: number,
-  rightKeys: number
+  uniqueKeys: number
 ) => {
-  const leftPercent = ((leftKeys / totalKeys) * 100).toFixed(2);
-  const rightPercent = ((rightKeys / totalKeys) * 100).toFixed(2);
-
   totalKeysText.textContent = `Total Keys: ${totalKeys}`;
   uniqueKeysText.textContent = `Unique Keys: ${uniqueKeys}`;
-  leftKeysText.textContent = `Left Hand Keys: ${leftKeys} (${leftPercent}%)`;
-  rightKeysText.textContent = `Right Hand Keys: ${rightKeys} (${rightPercent}%)`;
 
   updateKeyboardVisualization(keyFrequencies, totalKeys);
 };

@@ -1,17 +1,13 @@
 import { jsonOutputEl, resultsEl } from "../ui";
+import { updateAlternationResults } from "./alternation";
 import type { analyze } from "./analyze";
 import { updateKeyFrequencyResults } from "./key-frequency";
 
 import { updateSFBResults } from "./sfb";
 
 export const displayResult = (result: ReturnType<typeof analyze>) => {
-  updateKeyFrequencyResults(
-    result.keyFrequencies,
-    result.totalKeys,
-    result.uniqueKeys,
-    result.leftKeys,
-    result.rightKeys
-  );
+  updateKeyFrequencyResults(result.keyFrequencies, result.totalKeys, result.uniqueKeys);
+  updateAlternationResults(result.totalKeys, result.leftKeys, result.rightKeys);
   updateSFBResults(
     result.sfbs,
     result.totalSfbs,
