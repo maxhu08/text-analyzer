@@ -69,7 +69,7 @@ export const analyze = (text: string) => {
   }
 
   return {
-    textLength: text.length,
+    characters: text.length,
     totalKeys,
     uniqueKeys: charCounts.size,
     keyFrequencies: Object.fromEntries(charCounts),

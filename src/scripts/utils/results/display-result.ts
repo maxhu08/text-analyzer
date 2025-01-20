@@ -19,14 +19,14 @@ export const displayResult = (result: ReturnType<typeof analyze>) => {
     result.totalSfbs,
     result.uniqueSfbs,
     result.keyFrequencies,
-    result.textLength
+    result.characters
   );
   updateScissorResults(
     result.scissors,
     result.totalScissors,
     result.uniqueScissors,
     result.keyFrequencies,
-    result.textLength
+    result.characters
   );
 
   jsonOutputEl.textContent = JSON.stringify(result, null, 2);
