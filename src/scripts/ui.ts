@@ -1,5 +1,8 @@
 export const layoutsEl = document.getElementById("layouts") as HTMLTextAreaElement;
 export const textTextareaEl = document.getElementById("text-textarea") as HTMLTextAreaElement;
+
+export const test10kButtonEl = document.getElementById("test-10k-button") as HTMLButtonElement;
+export const clearButtonEl = document.getElementById("clear-button") as HTMLButtonElement;
 export const analyzeButtonEl = document.getElementById("analyze-button") as HTMLButtonElement;
 
 export const resultsEl = document.getElementById("results") as HTMLDivElement;

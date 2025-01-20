@@ -22,7 +22,15 @@
         <textarea id="text-textarea" type="text" autocomplete="off" rows="8"
           class="scrollbar-hidden w-full resize-none rounded-md border-2 border-transparent bg-neutral-800 p-2 text-base text-white placeholder-neutral-500 outline-none transition duration-[250ms] focus-within:border-blue-500"
           placeholder="input text..."></textarea>
-
+        <div class="grid grid-flow-row grid-cols-2 gap-2">
+          <button id="test-10k-button"
+            class="w-full cursor-pointer rounded-md bg-emerald-500 p-2 transition hover:bg-emerald-600">
+            <span class="text-base text-white">test top 10k words</span>
+          </button>
+          <button id="clear-button" class="w-full cursor-pointer rounded-md bg-red-500 p-2 transition hover:bg-red-600">
+            <span class="text-base text-white">clear</span>
+          </button>
+        </div>
         <button id="analyze-button"
           class="w-full cursor-pointer rounded-md bg-emerald-500 p-2 transition hover:bg-emerald-600">
           <span class="text-base text-white">analyze</span>
