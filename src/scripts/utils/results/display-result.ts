@@ -3,6 +3,7 @@ import type { analyze } from "../analyze";
 
 import { updateAlternationResults } from "./alternation";
 import { updateKeyFrequencyResults } from "./key-frequency";
+import { updateScissorResults } from "./scissor";
 import { updateSFBResults } from "./sfb";
 
 export const displayResult = (result: ReturnType<typeof analyze>) => {
@@ -20,6 +21,14 @@ export const displayResult = (result: ReturnType<typeof analyze>) => {
     result.keyFrequencies,
     result.textLength
   );
+  updateScissorResults(
+    result.scissors,
+    result.totalScissors,
+    result.uniqueScissors,
+    result.keyFrequencies,
+    result.textLength
+  );
+
   jsonOutputEl.textContent = JSON.stringify(result, null, 2);
 
   resultsEl.classList.replace("hidden", "grid");

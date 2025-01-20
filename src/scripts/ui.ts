@@ -18,4 +18,10 @@ export const totalSfbsText = document.getElementById("total-sfbs-text") as HTMLP
 export const uniqueSfbsText = document.getElementById("unique-sfbs-text") as HTMLParagraphElement;
 export const sfbsEl = document.getElementById("sfbs") as HTMLDivElement;
 
+// prettier-ignore
+export const totalScissorsText = document.getElementById("total-scissors-text") as HTMLParagraphElement;
+// prettier-ignore
+export const uniqueScissorsText = document.getElementById("unique-scissors-text") as HTMLParagraphElement;
+export const scissorsEl = document.getElementById("scissors") as HTMLDivElement;
+
 export const jsonOutputEl = document.getElementById("json-output") as HTMLParagraphElement;
