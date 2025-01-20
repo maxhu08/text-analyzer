@@ -11,7 +11,7 @@
 </head>
 
 <body dir="ltr" class="min-h-screen bg-neutral-900">
-  <div class="mx-auto grid w-[95%] grid-flow-row sm:w-[80%] md:w-[60%] lg:w-[40%]">
+  <div class="mx grid w-auto lg:w-[800px] grid-flow-row mx-20 lg:mx-auto">
     <main class="grid grid-flow-row gap-8 pt-16">
       <div class="grid grid-flow-row gap-2">
         <h1 class="text-4xl font-semibold text-white">Text Analyzer</h1>
@@ -41,7 +41,9 @@
         <p class="text-base font-semibold text-white">Key Frequencies</p>
         <p id="total-keys-text" class="text-base text-white">Total Keys:</p>
         <p id="unique-keys-text" class="text-base text-white">Unique Keys:</p>
-        <div id="keyboard" class="grid gap-1"></div>
+        <div class="grid place-items-center">
+          <div id="keyboard" class="grid gap-1 w-full max-w-[760px]"></div>
+        </div>
         <p class="text-base font-semibold text-white">Alternations</p>
         <p id="alternations-text" class="text-base text-white">Alternations:</p>
         <div id="alternations-bar" class="grid bg-neutral-800 h-2 rounded-md gap-2 overflow-hidden">
