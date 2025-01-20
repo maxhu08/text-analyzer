@@ -8,7 +8,9 @@ export const updateSFBResults = (
   keyFrequencies: Record<string, number>,
   totalKeys: number
 ) => {
-  totalSfbsText.textContent = `Total SFBs: ${totalSfbs}`;
+  const sfbPercent = ((totalSfbs / (totalKeys - 1)) * 100).toFixed(2);
+
+  totalSfbsText.textContent = `Total SFBs: ${totalSfbs} (${sfbPercent}%)`;
   uniqueSfbsText.textContent = `Unique SFBs: ${uniqueSfbs}`;
 
   const sortedSfbs = Object.entries(sfbs).sort((a, b) => b[1] - a[1]);
