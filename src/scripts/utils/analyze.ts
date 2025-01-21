@@ -8,7 +8,9 @@ export const analyze = (text: string) => {
   const bottomRow = new Set(kbStore.getLayoutSplit()[3]);
 
   const validKeys = new Set(keyboardLayoutSplit.join(""));
-  const charCounts = new Map<string, number>();
+  const keyFrequencies = new Map<string, number>();
+  const firstKeyFrequencies = new Map<string, number>();
+  const lastKeyFrequencies = new Map<string, number>();
   const sfbs = new Map<string, number>();
   const scissors = new Map<string, number>();
 
@@ -20,11 +22,18 @@ export const analyze = (text: string) => {
 
   for (let i = 0; i < text.length; i++) {
     const char = text[i].toLowerCase();
+    const prevChar = text[i - 1]?.toLowerCase();
     const nextChar = text[i + 1]?.toLowerCase();
+
+    // first and last key frequencies
+    if (!prevChar || prevChar === " ")
+      firstKeyFrequencies.set(char, (firstKeyFrequencies.get(char) || 0) + 1);
+    if (!nextChar || nextChar === " ")
+      lastKeyFrequencies.set(char, (lastKeyFrequencies.get(char) || 0) + 1);
 
     // left and right usage
     if (validKeys.has(char)) {
-      charCounts.set(char, (charCounts.get(char) || 0) + 1);
+      keyFrequencies.set(char, (keyFrequencies.get(char) || 0) + 1);
       totalKeys++;
 
       const fingerGroup = fingerMap.get(char);
@@ -71,8 +80,12 @@ export const analyze = (text: string) => {
   return {
     characters: text.length,
     totalKeys,
-    uniqueKeys: charCounts.size,
-    keyFrequencies: Object.fromEntries(charCounts),
+    uniqueKeys: keyFrequencies.size,
+    keyFrequencies: Object.fromEntries(keyFrequencies),
+    firstKeyFrequencies: Object.fromEntries(firstKeyFrequencies),
+    uniqueFirstKeys: firstKeyFrequencies.size,
+    lastKeyFrequencies: Object.fromEntries(lastKeyFrequencies),
+    uniqueLastKeys: lastKeyFrequencies.size,
     alternations,
     leftKeys,
     rightKeys,
