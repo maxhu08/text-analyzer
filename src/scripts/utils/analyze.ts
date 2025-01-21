@@ -48,29 +48,26 @@ export const analyze = (text: string) => {
       }
     }
 
-    // sfbs
-    if (validKeys.has(char) && validKeys.has(nextChar)) {
+    // sfbs and scissors
+    if (nextChar && validKeys.has(nextChar)) {
       const finger1 = fingerMap.get(char);
       const finger2 = fingerMap.get(nextChar);
-      if (finger1 && finger2 && finger1 === finger2) {
+
+      // sfbs
+      if (finger1 && finger1 === finger2) {
         const bigram = char + nextChar;
         sfbs.set(bigram, (sfbs.get(bigram) || 0) + 1);
       }
-    }
 
-    // scissors
-    if (validKeys.has(char) && validKeys.has(nextChar)) {
-      const hand1 = fingerMap.get(char)?.[0];
-      const hand2 = fingerMap.get(nextChar)?.[0];
-
-      const isScissor =
+      // scissors
+      const hand1 = finger1?.[0];
+      const hand2 = finger2?.[0];
+      if (
         hand1 &&
-        hand2 &&
-        hand1 === hand2 && // same hand
+        hand1 === hand2 &&
         ((topRow.has(char) && bottomRow.has(nextChar)) ||
-          (bottomRow.has(char) && topRow.has(nextChar))); // top-to-bottom or vice versa
-
-      if (isScissor) {
+          (bottomRow.has(char) && topRow.has(nextChar)))
+      ) {
         const bigram = char + nextChar;
         scissors.set(bigram, (scissors.get(bigram) || 0) + 1);
       }
