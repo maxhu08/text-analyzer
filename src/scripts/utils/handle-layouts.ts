@@ -23,13 +23,13 @@ export const handleLayouts = () => {
 
       allButtons.forEach((btn) => {
         btn.setAttribute("selected", "no");
-        btn.classList.remove("bg-emerald-500", "hover:bg-emerald-600");
+        btn.classList.remove("bg-blue-500", "hover:bg-blue-600");
         btn.classList.add("bg-neutral-800", "hover:bg-neutral-700");
       });
 
       button.setAttribute("selected", "yes");
       button.classList.remove("bg-neutral-800", "hover:bg-neutral-700");
-      button.classList.add("bg-emerald-500", "hover:bg-emerald-600");
+      button.classList.add("bg-blue-500", "hover:bg-blue-600");
 
       kbStore.setLayout(layout as KeyboardLayout);
     };
