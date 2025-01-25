@@ -10,6 +10,7 @@ export const handleModals = () => {
   modalOverlayEl.addEventListener("click", () => {
     Array.from(modalOverlayEl.children[0].children).forEach((child) => {
       if (child.classList.contains("block")) {
+        modalOverlayEl.classList.replace("block", "hidden");
         child.classList.replace("block", "hidden");
       }
     });
