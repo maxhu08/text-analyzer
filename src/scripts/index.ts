@@ -1,7 +1,14 @@
 import { english10k } from "./constants/10k";
-import { analyzeButtonEl, clearButtonEl, test10kButtonEl, textTextareaEl } from "./ui";
+import {
+  analyzeButtonEl,
+  clearButtonEl,
+  test10kButtonEl,
+  textTextareaEl,
+  viewResultJsonButtonEl
+} from "./ui";
 import { analyze } from "./utils/analyze";
 import { handleLayouts } from "./utils/handle-layouts";
+import { handleModals, openModal } from "./utils/modal";
 import { displayResult } from "./utils/results/display-result";
 import { getTextLocalStorage, setTextLocalStorage } from "./utils/text-store";
 
@@ -38,3 +45,7 @@ if (text) textTextareaEl.value = text;
 textTextareaEl.addEventListener("input", (e) => {
   setTextLocalStorage((e.target as HTMLTextAreaElement).value);
 });
+
+viewResultJsonButtonEl.onclick = () => openModal("result-json-modal");
+
+handleModals();

@@ -12,7 +12,7 @@
 
 <body dir="ltr" class="min-h-screen bg-neutral-900">
   <div class="mx grid w-auto lg:w-[800px] grid-flow-row mx-20 lg:mx-auto">
-    <main class="grid grid-flow-row gap-8 pt-16">
+    <main class="grid grid-flow-row gap-8 py-16">
       <div class="grid grid-flow-row gap-2">
         <h1 class="text-4xl font-semibold text-white">Text Analyzer</h1>
         <div>
@@ -63,11 +63,30 @@
         <p id="unique-scissors-text" class="text-base text-white">Unique Scissors:</p>
         <div id="scissors"></div>
         <p class="text-base font-semibold text-white">JSON</p>
-        <div class="rounded-md bg-neutral-800 p-2">
-          <p id="json-output" class="whitespace-pre-wrap text-white">Awaiting results</p>
+        <div class="grid grid-flow-row grid-cols-2 gap-2">
+          <button id="view-result-json-button"
+            class="w-full cursor-pointer rounded-md bg-emerald-500 p-2 transition hover:bg-emerald-600">
+            <span class="text-base text-white">view result json</span>
+          </button>
         </div>
       </div>
     </main>
+  </div>
+  <div id="modal-overlay" class="fixed inset-0 bg-black/50 z-50 hidden">
+    <div class="grid place-items-center">
+      <div id="result-json-modal" class="hidden max-h-[50vh] overflow-hidden">
+        <div class="grid grid-flow-row gap-2">
+          <h1 class="text-4xl font-semibold text-white">Result JSON</h1>
+          <div class="rounded-md bg-neutral-800 p-2">
+            <p id="json-output" class="whitespace-pre-wrap text-white">Awaiting results</p>
+          </div>
+          <button id="close-modal-button"
+            class="w-full cursor-pointer rounded-md bg-red-500 p-2 transition hover:bg-red-600">
+            <span class="text-base text-white">close</span>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </body>
 

@@ -27,4 +27,8 @@ export const totalScissorsText = document.getElementById("total-scissors-text") 
 export const uniqueScissorsText = document.getElementById("unique-scissors-text") as HTMLParagraphElement;
 export const scissorsEl = document.getElementById("scissors") as HTMLDivElement;
 
+// prettier-ignore
+export const viewResultJsonButtonEl = document.getElementById("view-result-json-button") as HTMLButtonElement;
 export const jsonOutputEl = document.getElementById("json-output") as HTMLParagraphElement;
+
+export const modalOverlayEl = document.getElementById("modal-overlay") as HTMLDivElement;
