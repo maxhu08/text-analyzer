@@ -11,7 +11,7 @@
 </head>
 
 <body dir="ltr" class="min-h-screen bg-neutral-900">
-  <div class="mx grid w-auto lg:w-[800px] grid-flow-row mx-20 lg:mx-auto">
+  <div class="mx mx-20 grid w-auto grid-flow-row lg:mx-auto lg:w-[800px]">
     <main class="grid grid-flow-row gap-8 py-16">
       <div class="grid grid-flow-row gap-2">
         <h1 class="text-4xl font-semibold text-white">Text Analyzer</h1>
@@ -42,15 +42,15 @@
         <p id="total-keys-text" class="text-base text-white">Total Keys:</p>
         <p id="unique-keys-text" class="text-base text-white">Unique Keys:</p>
         <div class="grid place-items-center">
-          <div id="keyboard" class="grid gap-1 w-full max-w-[760px]"></div>
+          <div id="keyboard" class="grid w-full max-w-[760px] gap-1"></div>
         </div>
         <p class="text-base font-semibold text-white">Alternations</p>
         <p id="alternations-text" class="text-base text-white">Alternations:</p>
-        <div id="alternations-bar" class="grid bg-neutral-800 h-2 rounded-md gap-2 overflow-hidden">
-          <div class="bg-orange-500/50 h-full w-full"></div>
-          <div class="bg-sky-500/50 h-full w-fill"></div>
+        <div id="alternations-bar" class="grid h-2 gap-2 overflow-hidden rounded-md bg-neutral-800">
+          <div class="h-full w-full bg-orange-500/50"></div>
+          <div class="w-fill h-full bg-sky-500/50"></div>
         </div>
-        <div class="grid grid-cols-2 place-items-center w-full">
+        <div class="grid w-full grid-cols-2 place-items-center">
           <p id="left-keys-text" class="text-base text-white">Left Hand Keys:</p>
           <p id="right-keys-text" class="text-base text-white">Right Hand Keys:</p>
         </div>
@@ -72,12 +72,12 @@
       </div>
     </main>
   </div>
-  <div id="modal-overlay" class="fixed inset-0 bg-black/50 z-50 hidden">
-    <div class="grid place-items-center">
-      <div id="result-json-modal" class="hidden max-h-[50vh] overflow-hidden">
+  <div id="modal-overlay" class="fixed inset-0 z-10 hidden h-[100vh] w-[100vw] bg-black/50 transition duration-[250ms]">
+    <div class="grid h-[100vh] w-[100vw] place-items-center p-4">
+      <div id="result-json-modal" class="hidden z-50 bg-neutral-900 p-4 rounded-md w-[50rem]">
         <div class="grid grid-flow-row gap-2">
           <h1 class="text-4xl font-semibold text-white">Result JSON</h1>
-          <div class="rounded-md bg-neutral-800 p-2">
+          <div class="rounded-md bg-neutral-800 p-2 max-h-[50rem] overflow-y-scroll">
             <p id="json-output" class="whitespace-pre-wrap text-white">Awaiting results</p>
           </div>
           <button id="close-modal-button"

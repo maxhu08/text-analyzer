@@ -15,4 +15,9 @@ export const handleModals = () => {
       }
     });
   });
+
+  const modal = document.getElementById("result-json-modal") as HTMLDivElement;
+  modal.addEventListener("click", (event) => {
+    event.stopPropagation();
+  });
 };
