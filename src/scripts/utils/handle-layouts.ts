@@ -11,7 +11,7 @@ export const handleLayouts = () => {
     button.className = "layout-button rounded-md py-2 outline-none transition duration-[250ms]";
 
     if (layout === kbStore.getLayout().name) {
-      button.classList.add("bg-emerald-500", "hover:bg-emerald-600");
+      button.classList.add("bg-blue-500", "hover:bg-blue-600");
       button.setAttribute("selected", "yes");
     } else {
       button.classList.add("bg-neutral-800", "hover:bg-neutral-700");
