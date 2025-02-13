@@ -1,92 +1,99 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="styles/index.css" />
-    <link rel="stylesheet" type="text/css" href="styles/tailwind.css" />
-    <script src="scripts/index.ts" type="module" defer></script>
-    <title>Text Analyzer</title>
-  </head>
 
-  <body dir="ltr" class="min-h-screen bg-neutral-900">
-    <div class="mx mx-20 grid w-auto grid-flow-row lg:mx-auto lg:w-[800px]">
-      <main class="grid grid-flow-row gap-8 py-16">
-        <div class="grid grid-flow-row gap-2">
-          <h1 class="text-4xl font-semibold text-white">Text Analyzer</h1>
-          <div>
-            <p class="text-base font-semibold text-white">Layout</p>
-            <div id="layouts" class="grid grid-flow-row grid-cols-3 gap-2"></div>
-          </div>
-          <textarea
-            id="text-textarea"
-            type="text"
-            autocomplete="off"
-            rows="8"
-            class="scrollbar-hidden w-full resize-none rounded-md border-2 border-transparent bg-neutral-800 p-2 text-base text-white placeholder-neutral-500 outline-none transition duration-[250ms] focus-within:border-blue-500"
-            placeholder="input text..."
-          ></textarea>
-          <div class="grid grid-flow-row grid-cols-2 gap-2">
-            <button id="test-10k-button" class="w-full cursor-pointer rounded-md bg-emerald-500 p-2 transition hover:bg-emerald-600">
-              <span class="text-base text-white">test top 10k words</span>
-            </button>
-            <button id="clear-button" class="w-full cursor-pointer rounded-md bg-red-500 p-2 transition hover:bg-red-600">
-              <span class="text-base text-white">clear</span>
-            </button>
-          </div>
-          <button id="analyze-button" class="w-full cursor-pointer rounded-md bg-emerald-500 p-2 transition hover:bg-emerald-600">
-            <span class="text-base text-white">analyze</span>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="styles/index.css" />
+  <link rel="stylesheet" type="text/css" href="styles/tailwind.css" />
+  <script src="scripts/index.ts" type="module" defer></script>
+  <title>Text Analyzer</title>
+</head>
+
+<body dir="ltr" class="min-h-screen bg-neutral-900">
+  <div class="mx mx-20 grid w-auto grid-flow-row lg:mx-auto lg:w-[800px]">
+    <main class="grid grid-flow-row gap-8 py-16">
+      <div class="grid grid-flow-row gap-2">
+        <h1 class="text-4xl font-semibold text-white">Text Analyzer</h1>
+        <div>
+          <p class="text-base font-semibold text-white">Layout</p>
+          <div id="layouts" class="grid grid-flow-row grid-cols-3 gap-2"></div>
+        </div>
+        <textarea id="text-textarea" type="text" autocomplete="off" rows="8"
+          class="scrollbar-hidden w-full resize-none rounded-md border-2 border-transparent bg-neutral-800 p-2 text-base text-white placeholder-neutral-500 outline-none transition duration-[250ms] focus-within:border-blue-500"
+          placeholder="input text..."></textarea>
+        <div class="grid grid-flow-row grid-cols-2 gap-2">
+          <button id="test-10k-button"
+            class="w-full cursor-pointer rounded-md bg-emerald-500 p-2 transition hover:bg-emerald-600">
+            <span class="text-base text-white">test top 10k words</span>
+          </button>
+          <button id="clear-button" class="w-full cursor-pointer rounded-md bg-red-500 p-2 transition hover:bg-red-600">
+            <span class="text-base text-white">clear</span>
           </button>
         </div>
-        <div id="results" class="hidden grid-flow-row gap-2">
-          <h1 class="text-4xl font-semibold text-white">Results</h1>
-          <p class="text-base font-semibold text-white">Key Frequencies</p>
-          <p id="total-keys-text" class="text-base text-white">Total Keys:</p>
-          <p id="unique-keys-text" class="text-base text-white">Unique Keys:</p>
-          <div class="grid place-items-center">
-            <div id="keyboard" class="grid w-full max-w-[760px] gap-1"></div>
-          </div>
-          <p class="text-base font-semibold text-white">Alternations</p>
-          <p id="alternations-text" class="text-base text-white">Alternations:</p>
-          <div id="alternations-bar" class="grid h-2 gap-2 overflow-hidden rounded-md bg-neutral-800">
-            <div class="h-full w-full bg-orange-500/50"></div>
-            <div class="w-fill h-full bg-sky-500/50"></div>
-          </div>
-          <div class="grid w-full grid-cols-2 place-items-center">
-            <p id="left-keys-text" class="text-base text-white">Left Hand Keys:</p>
-            <p id="right-keys-text" class="text-base text-white">Right Hand Keys:</p>
-          </div>
-          <p class="text-base font-semibold text-white">SFBs</p>
-          <p id="total-sfbs-text" class="text-base text-white">Total SFBs:</p>
-          <p id="unique-sfbs-text" class="text-base text-white">Unique SFBs:</p>
-          <div id="sfbs"></div>
-          <p class="text-base font-semibold text-white">Scissors</p>
-          <p id="total-scissors-text" class="text-base text-white">Total Scissors:</p>
-          <p id="unique-scissors-text" class="text-base text-white">Unique Scissors:</p>
-          <div id="scissors"></div>
-          <p class="text-base font-semibold text-white">JSON</p>
-          <div class="grid grid-flow-row grid-cols-2 gap-2">
-            <button id="view-result-json-button" class="w-full cursor-pointer rounded-md bg-emerald-500 p-2 transition hover:bg-emerald-600">
-              <span class="text-base text-white">view result json</span>
-            </button>
-          </div>
+        <button id="analyze-button"
+          class="w-full cursor-pointer rounded-md bg-emerald-500 p-2 transition hover:bg-emerald-600">
+          <span class="text-base text-white">analyze</span>
+        </button>
+      </div>
+      <div id="results" class="hidden grid-flow-row gap-2">
+        <h1 class="text-4xl font-semibold text-white">Results</h1>
+        <p class="text-base font-semibold text-white">Key Frequencies</p>
+        <p id="total-keys-text" class="text-base text-white">Total Keys:</p>
+        <p id="unique-keys-text" class="text-base text-white">Unique Keys:</p>
+        <div class="grid place-items-center">
+          <div id="keyboard" class="grid w-full max-w-[760px] gap-1"></div>
         </div>
-      </main>
-    </div>
-    <div id="modal-overlay" class="fixed inset-0 z-10 hidden h-[100vh] w-[100vw] bg-black/50 transition duration-[250ms]">
-      <div id="modal-container" class="grid h-[100vh] w-[100vw] place-items-center p-4">
-        <div id="result-json-modal" class="z-50 hidden w-[50rem] rounded-md bg-neutral-900 p-4">
-          <div class="grid grid-flow-row gap-2">
-            <h1 class="text-4xl font-semibold text-white">Result JSON</h1>
-            <div class="max-h-[50rem] overflow-y-scroll rounded-md bg-neutral-800 p-2">
-              <p id="json-output" class="whitespace-pre-wrap text-white">Awaiting results</p>
-            </div>
-            <button id="close-modal-button" class="w-full cursor-pointer rounded-md bg-red-500 p-2 transition hover:bg-red-600">
-              <span class="text-base text-white">close</span>
-            </button>
+        <p class="text-base font-semibold text-white">Alternations</p>
+        <p id="alternations-text" class="text-base text-white">Alternations:</p>
+        <div id="alternations-bar" class="grid h-2 gap-2 overflow-hidden rounded-md bg-neutral-800">
+          <div class="h-full w-full bg-orange-500/50"></div>
+          <div class="w-fill h-full bg-sky-500/50"></div>
+        </div>
+        <div class="grid w-full grid-cols-2 place-items-center">
+          <p id="left-keys-text" class="text-base text-white">Left Hand Keys:</p>
+          <p id="right-keys-text" class="text-base text-white">Right Hand Keys:</p>
+        </div>
+        <p class="text-base font-semibold text-white">SFBs</p>
+        <p id="total-sfbs-text" class="text-base text-white">Total SFBs:</p>
+        <p id="unique-sfbs-text" class="text-base text-white">Unique SFBs:</p>
+        <div id="sfbs"></div>
+        <p class="text-base font-semibold text-white">Scissors</p>
+        <p id="total-scissors-text" class="text-base text-white">Total Scissors:</p>
+        <p id="unique-scissors-text" class="text-base text-white">Unique Scissors:</p>
+        <div id="scissors"></div>
+        <p class="text-base font-semibold text-white">First Key of Words Frequencies</p>
+        <p id="total-first-keys-text" class="text-base text-white">Total Keys:</p>
+        <p id="unique-first-keys-text" class="text-base text-white">Unique Keys:</p>
+        <div class="grid place-items-center">
+          <div id="first-keys-keyboard" class="grid w-full max-w-[760px] gap-1"></div>
+        </div>
+        <p class="text-base font-semibold text-white">JSON</p>
+        <div class="grid grid-flow-row grid-cols-2 gap-2">
+          <button id="view-result-json-button"
+            class="w-full cursor-pointer rounded-md bg-emerald-500 p-2 transition hover:bg-emerald-600">
+            <span class="text-base text-white">view result json</span>
+          </button>
+        </div>
+      </div>
+    </main>
+  </div>
+  <div id="modal-overlay" class="fixed inset-0 z-10 hidden h-[100vh] w-[100vw] bg-black/50 transition duration-[250ms]">
+    <div id="modal-container" class="grid h-[100vh] w-[100vw] place-items-center p-4">
+      <div id="result-json-modal" class="z-50 hidden w-[50rem] rounded-md bg-neutral-900 p-4">
+        <div class="grid grid-flow-row gap-2">
+          <h1 class="text-4xl font-semibold text-white">Result JSON</h1>
+          <div class="max-h-[50rem] overflow-y-scroll rounded-md bg-neutral-800 p-2">
+            <p id="json-output" class="whitespace-pre-wrap text-white">Awaiting results</p>
           </div>
+          <button id="close-modal-button"
+            class="w-full cursor-pointer rounded-md bg-red-500 p-2 transition hover:bg-red-600">
+            <span class="text-base text-white">close</span>
+          </button>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
