@@ -9,5 +9,11 @@ export const updateKeyFrequencyResults = (
   totalKeysText.textContent = `Total Keys: ${totalKeys}`;
   uniqueKeysText.textContent = `Unique Keys: ${uniqueKeys}`;
 
-  updateKeyboardVisualization("main", keyboardEl, keyFrequencies, totalKeys);
+  updateKeyboardVisualization(
+    "main",
+    keyboardEl,
+    keyFrequencies,
+    totalKeys,
+    "#10b981" // emerald-500
+  );
 };

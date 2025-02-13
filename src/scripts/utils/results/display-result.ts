@@ -7,6 +7,7 @@ import { updateAlternationResults } from "./alternation";
 import { updateSFBResults } from "./sfb";
 import { updateScissorResults } from "./scissor";
 import { updateFirstKeyFrequencyResults } from "./first-key-frequency";
+import { updateLastKeyFrequencyResults } from "./last-key-frequency";
 
 export const displayResult = (result: ReturnType<typeof analyze>) => {
   updateKeyFrequencyResults(result.keyFrequencies, result.totalKeys, result.uniqueKeys);
@@ -31,6 +32,7 @@ export const displayResult = (result: ReturnType<typeof analyze>) => {
     result.characters
   );
   updateFirstKeyFrequencyResults(result.firstKeyFrequencies, result.words, result.uniqueFirstKeys);
+  updateLastKeyFrequencyResults(result.lastKeyFrequencies, result.words, result.uniqueLastKeys);
 
   jsonOutputEl.textContent = JSON.stringify(result, null, 2);
 

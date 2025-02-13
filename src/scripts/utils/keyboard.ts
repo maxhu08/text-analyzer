@@ -126,7 +126,8 @@ export const updateKeyboardVisualization = (
   name: string,
   keyboardEl: HTMLElement,
   keyFrequencies: Record<string, number>,
-  totalKeys: number
+  totalKeys: number,
+  color: string
 ) => {
   keyboardEl.innerHTML = "";
   createKeyboardLayout(name, keyboardEl);
@@ -138,7 +139,6 @@ export const updateKeyboardVisualization = (
     const count = keyFrequencies[key] || 0;
     const percentage = totalKeys ? (count / totalKeys) * 100 : 0;
 
-    let color = "#10b981"; // bg-emerald-500
     let ratio = 1;
     if (percentage >= 7) ratio = 0.1;
     else if (percentage >= 5) ratio = 0.2;

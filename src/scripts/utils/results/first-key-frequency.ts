@@ -9,5 +9,11 @@ export const updateFirstKeyFrequencyResults = (
   totalFirstKeysText.textContent = `Total Keys: ${totalKeys}`;
   uniqueFirstKeysText.textContent = `Unique Keys: ${uniqueKeys}`;
 
-  updateKeyboardVisualization("first-keys", firstKeysKeyboardEl, keyFrequencies, totalKeys);
+  updateKeyboardVisualization(
+    "first-keys",
+    firstKeysKeyboardEl,
+    keyFrequencies,
+    totalKeys,
+    "#eab308" // yellow-500
+  );
 };

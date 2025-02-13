@@ -28,6 +28,10 @@ export const totalFirstKeysText = document.getElementById("total-first-keys-text
 export const uniqueFirstKeysText = document.getElementById("unique-first-keys-text") as HTMLParagraphElement;
 export const firstKeysKeyboardEl = document.getElementById("first-keys-keyboard") as HTMLDivElement;
 
+export const totalLastKeysText = document.getElementById("total-last-keys-text") as HTMLParagraphElement;
+export const uniqueLastKeysText = document.getElementById("unique-last-keys-text") as HTMLParagraphElement;
+export const lastKeysKeyboardEl = document.getElementById("last-keys-keyboard") as HTMLDivElement;
+
 export const viewResultJsonButtonEl = document.getElementById("view-result-json-button") as HTMLButtonElement;
 export const jsonOutputEl = document.getElementById("json-output") as HTMLParagraphElement;
 
