@@ -38,49 +38,65 @@
             <span class="text-base text-white">analyze</span>
           </button>
         </div>
-        <div id="results" class="hidden grid-flow-row gap-2">
+        <div id="results" class="hidden grid-flow-row gap-8">
           <h1 class="text-4xl font-semibold text-white">Results</h1>
-          <p class="text-base font-semibold text-white">Key Frequencies</p>
-          <p id="total-keys-text" class="text-base text-white">Total Keys:</p>
-          <p id="unique-keys-text" class="text-base text-white">Unique Keys:</p>
-          <div class="grid place-items-center">
-            <div id="keyboard" class="grid w-full max-w-[760px] gap-1"></div>
+          <div class="grid grid-flow-row gap-2">
+            <p class="text-base font-semibold text-white">Key Frequencies</p>
+            <div class="grid grid-flow-row gap-2">
+              <p id="total-keys-text" class="text-base text-white">Total Keys:</p>
+              <p id="unique-keys-text" class="text-base text-white">Unique Keys:</p>
+              <div class="grid place-items-center">
+                <div id="keyboard" class="grid w-full max-w-[760px] gap-1"></div>
+              </div>
+            </div>
+            <p class="text-base font-semibold text-white">Alternations</p>
+            <div class="grid grid-flow-row gap-2">
+              <p id="alternations-text" class="text-base text-white">Alternations:</p>
+              <div id="alternations-bar" class="grid h-2 gap-2 overflow-hidden rounded-md bg-neutral-800">
+                <div class="h-full w-full bg-orange-500/50"></div>
+                <div class="w-fill h-full bg-sky-500/50"></div>
+              </div>
+              <div class="grid w-full grid-cols-2 place-items-center">
+                <p id="left-keys-text" class="text-base text-white">Left Hand Keys:</p>
+                <p id="right-keys-text" class="text-base text-white">Right Hand Keys:</p>
+              </div>
+            </div>
+            <p class="text-base font-semibold text-white">SFBs</p>
+            <div class="grid grid-flow-row gap-2">
+              <p id="total-sfbs-text" class="text-base text-white">Total SFBs:</p>
+              <p id="unique-sfbs-text" class="text-base text-white">Unique SFBs:</p>
+              <div id="sfbs"></div>
+            </div>
+            <p class="text-base font-semibold text-white">Scissors</p>
+            <div class="grid grid-flow-row gap-2">
+              <p id="total-scissors-text" class="text-base text-white">Total Scissors:</p>
+              <p id="unique-scissors-text" class="text-base text-white">Unique Scissors:</p>
+              <div id="scissors"></div>
+            </div>
+            <p class="text-base font-semibold text-white">First Key of Words Frequencies</p>
+            <div class="grid grid-flow-row gap-2">
+              <p id="total-first-keys-text" class="text-base text-white">Total Keys:</p>
+              <p id="unique-first-keys-text" class="text-base text-white">Unique Keys:</p>
+              <div class="grid place-items-center">
+                <div id="first-keys-keyboard" class="grid w-full max-w-[760px] gap-1"></div>
+              </div>
+            </div>
+            <p class="text-base font-semibold text-white">Last Key of Words Frequencies</p>
+            <div class="grid grid-flow-row gap-2">
+              <p id="total-last-keys-text" class="text-base text-white">Total Keys:</p>
+              <p id="unique-last-keys-text" class="text-base text-white">Unique Keys:</p>
+              <div class="grid place-items-center">
+                <div id="last-keys-keyboard" class="grid w-full max-w-[760px] gap-1"></div>
+              </div>
+            </div>
           </div>
-          <p class="text-base font-semibold text-white">Alternations</p>
-          <p id="alternations-text" class="text-base text-white">Alternations:</p>
-          <div id="alternations-bar" class="grid h-2 gap-2 overflow-hidden rounded-md bg-neutral-800">
-            <div class="h-full w-full bg-orange-500/50"></div>
-            <div class="w-fill h-full bg-sky-500/50"></div>
-          </div>
-          <div class="grid w-full grid-cols-2 place-items-center">
-            <p id="left-keys-text" class="text-base text-white">Left Hand Keys:</p>
-            <p id="right-keys-text" class="text-base text-white">Right Hand Keys:</p>
-          </div>
-          <p class="text-base font-semibold text-white">SFBs</p>
-          <p id="total-sfbs-text" class="text-base text-white">Total SFBs:</p>
-          <p id="unique-sfbs-text" class="text-base text-white">Unique SFBs:</p>
-          <div id="sfbs"></div>
-          <p class="text-base font-semibold text-white">Scissors</p>
-          <p id="total-scissors-text" class="text-base text-white">Total Scissors:</p>
-          <p id="unique-scissors-text" class="text-base text-white">Unique Scissors:</p>
-          <div id="scissors"></div>
-          <p class="text-base font-semibold text-white">First Key of Words Frequencies</p>
-          <p id="total-first-keys-text" class="text-base text-white">Total Keys:</p>
-          <p id="unique-first-keys-text" class="text-base text-white">Unique Keys:</p>
-          <div class="grid place-items-center">
-            <div id="first-keys-keyboard" class="grid w-full max-w-[760px] gap-1"></div>
-          </div>
-          <p class="text-base font-semibold text-white">Last Key of Words Frequencies</p>
-          <p id="total-last-keys-text" class="text-base text-white">Total Keys:</p>
-          <p id="unique-last-keys-text" class="text-base text-white">Unique Keys:</p>
-          <div class="grid place-items-center">
-            <div id="last-keys-keyboard" class="grid w-full max-w-[760px] gap-1"></div>
-          </div>
-          <p class="text-base font-semibold text-white">JSON</p>
-          <div class="grid grid-flow-row grid-cols-2 gap-2">
-            <button id="view-result-json-button" class="w-full cursor-pointer rounded-md bg-emerald-500 p-2 transition hover:bg-emerald-600">
-              <span class="text-base text-white">view result json</span>
-            </button>
+          <div class="grid grid-flow-row gap-2">
+            <p class="text-base font-semibold text-white">JSON</p>
+            <div class="grid grid-flow-row grid-cols-2 gap-2">
+              <button id="view-result-json-button" class="w-full cursor-pointer rounded-md bg-emerald-500 p-2 transition hover:bg-emerald-600">
+                <span class="text-base text-white">view result json</span>
+              </button>
+            </div>
           </div>
         </div>
       </main>
