@@ -5,11 +5,10 @@ import {
   shiftIcon,
   tabIcon
 } from "../constants/keyboard-icons";
-import { keyboardEl } from "../ui";
 import { mixHexColors } from "./colors";
 import { keyboardLayoutStore } from "./keyboard-layout-store";
 
-export const createKeyboardLayout = (name: string) => {
+export const createKeyboardLayout = (name: string, keyboardEl: HTMLElement) => {
   const specialKeys: [string, string][] = [
     ["", "Backspace"],
     ["Tab", ""],
@@ -125,11 +124,12 @@ const createSpecialKeyElement = (name: string, icon: string, key: string): HTMLD
 
 export const updateKeyboardVisualization = (
   name: string,
+  keyboardEl: HTMLElement,
   keyFrequencies: Record<string, number>,
   totalKeys: number
 ) => {
   keyboardEl.innerHTML = "";
-  createKeyboardLayout(name);
+  createKeyboardLayout(name, keyboardEl);
 
   const keys = keyboardEl.querySelectorAll(".key");
 

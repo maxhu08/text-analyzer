@@ -11,7 +11,6 @@ export const totalKeysText = document.getElementById("total-keys-text") as HTMLP
 export const uniqueKeysText = document.getElementById("unique-keys-text") as HTMLParagraphElement;
 export const keyboardEl = document.getElementById("keyboard") as HTMLDivElement;
 
-// prettier-ignore
 export const alternationsText = document.getElementById("alternations-text") as HTMLParagraphElement;
 export const alternationsBarEl = document.getElementById("alternations-bar") as HTMLDivElement;
 export const leftKeysText = document.getElementById("left-keys-text") as HTMLParagraphElement;
@@ -21,13 +20,14 @@ export const totalSfbsText = document.getElementById("total-sfbs-text") as HTMLP
 export const uniqueSfbsText = document.getElementById("unique-sfbs-text") as HTMLParagraphElement;
 export const sfbsEl = document.getElementById("sfbs") as HTMLDivElement;
 
-// prettier-ignore
 export const totalScissorsText = document.getElementById("total-scissors-text") as HTMLParagraphElement;
-// prettier-ignore
 export const uniqueScissorsText = document.getElementById("unique-scissors-text") as HTMLParagraphElement;
 export const scissorsEl = document.getElementById("scissors") as HTMLDivElement;
 
-// prettier-ignore
+export const totalFirstKeysText = document.getElementById("total-first-keys-text") as HTMLParagraphElement;
+export const uniqueFirstKeysText = document.getElementById("unique-first-keys-text") as HTMLParagraphElement;
+export const firstKeysKeyboardEl = document.getElementById("first-keys-keyboard") as HTMLDivElement;
+
 export const viewResultJsonButtonEl = document.getElementById("view-result-json-button") as HTMLButtonElement;
 export const jsonOutputEl = document.getElementById("json-output") as HTMLParagraphElement;
 

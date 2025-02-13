@@ -1,4 +1,4 @@
-import { totalKeysText, uniqueKeysText } from "../../ui";
+import { keyboardEl, totalKeysText, uniqueKeysText } from "../../ui";
 import { updateKeyboardVisualization } from "../keyboard";
 
 export const updateKeyFrequencyResults = (
@@ -9,5 +9,5 @@ export const updateKeyFrequencyResults = (
   totalKeysText.textContent = `Total Keys: ${totalKeys}`;
   uniqueKeysText.textContent = `Unique Keys: ${uniqueKeys}`;
 
-  updateKeyboardVisualization("main", keyFrequencies, totalKeys);
+  updateKeyboardVisualization("main", keyboardEl, keyFrequencies, totalKeys);
 };

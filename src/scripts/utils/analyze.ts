@@ -19,11 +19,23 @@ export const analyze = (text: string) => {
   let totalKeys = 0;
   let alternations = 0;
   let prevHand: "L" | "R" | null = null;
+  let words = 0,
+    inWord = false;
 
   for (let i = 0; i < text.length; i++) {
     const char = text[i].toLowerCase();
     const prevChar = text[i - 1]?.toLowerCase();
     const nextChar = text[i + 1]?.toLowerCase();
+
+    // count words efficiently
+    if (char !== " " && char !== "\t" && char !== "\n") {
+      if (!inWord) {
+        words++;
+        inWord = true;
+      }
+    } else {
+      inWord = false;
+    }
 
     // first and last key frequencies
     if (!prevChar || prevChar === " ")
@@ -76,6 +88,7 @@ export const analyze = (text: string) => {
 
   return {
     characters: text.length,
+    words,
     totalKeys,
     uniqueKeys: keyFrequencies.size,
     keyFrequencies: Object.fromEntries(keyFrequencies),

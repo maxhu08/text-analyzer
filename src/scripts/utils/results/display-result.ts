@@ -1,10 +1,12 @@
-import { jsonOutputEl, resultsEl } from "../../ui";
 import type { analyze } from "../analyze";
 
-import { updateAlternationResults } from "./alternation";
+import { jsonOutputEl, resultsEl } from "../../ui";
+
 import { updateKeyFrequencyResults } from "./key-frequency";
-import { updateScissorResults } from "./scissor";
+import { updateAlternationResults } from "./alternation";
 import { updateSFBResults } from "./sfb";
+import { updateScissorResults } from "./scissor";
+import { updateFirstKeyFrequencyResults } from "./first-key-frequency";
 
 export const displayResult = (result: ReturnType<typeof analyze>) => {
   updateKeyFrequencyResults(result.keyFrequencies, result.totalKeys, result.uniqueKeys);
@@ -28,6 +30,7 @@ export const displayResult = (result: ReturnType<typeof analyze>) => {
     result.keyFrequencies,
     result.characters
   );
+  updateFirstKeyFrequencyResults(result.firstKeyFrequencies, result.words, result.uniqueFirstKeys);
 
   jsonOutputEl.textContent = JSON.stringify(result, null, 2);
 
