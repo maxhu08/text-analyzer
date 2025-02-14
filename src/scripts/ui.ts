@@ -37,3 +37,4 @@ export const jsonOutputEl = document.getElementById("json-output") as HTMLParagr
 
 export const modalOverlayEl = document.getElementById("modal-overlay") as HTMLDivElement;
 export const modalContainerEl = document.getElementById("modal-container") as HTMLDivElement;
+export const jsonOutputCloseModalButtonEl = document.getElementById("json-output-close-modal-button") as HTMLButtonElement;

@@ -1,4 +1,4 @@
-import { modalContainerEl, modalOverlayEl } from "../ui";
+import { jsonOutputCloseModalButtonEl, modalContainerEl, modalOverlayEl } from "../ui";
 
 export const openModal = (modalId: string) => {
   modalOverlayEl.setAttribute("current-modal", modalId);
@@ -16,6 +16,8 @@ export const openModal = (modalId: string) => {
 
 export const handleModals = () => {
   modalOverlayEl.addEventListener("click", () => closeCurrentModal());
+
+  jsonOutputCloseModalButtonEl.onclick = () => closeCurrentModal();
 
   modalContainerEl.style.transition = "transform 250ms cubic-bezier(0.22, 1, 0.36, 1)";
 
